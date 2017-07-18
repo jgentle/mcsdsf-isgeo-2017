@@ -1,13 +1,13 @@
 {
-  "name": "hackathon-starter",
-  "version": "4.3.0",
-  "description": "A boilerplate for Node.js web applications",
+  "name": "mcsdsf-isgeo-2017",
+  "version": "1.0.0",
+  "description": "A decision support system for geospatial data discovery and analysis.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/jgentle/mcsdsf-isgeo-2017.git"
   },
-  "author": "Sahat Yalkabov",
-  "license": "MIT",
+  "author": "John Gentle",
+  "license": "BSD-3",
   "scripts": {
     "start": "node app.js",
     "test": "mocha --reporter spec",
