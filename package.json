@@ -1,6 +1,7 @@
 {
   "name": "mcsdsf-isgeo-2017",
   "version": "0.0.1",
+  "private": true,
   "description": "A decision support system for geospatial data discovery and analysis.",
   "repository": {
     "type": "git",
