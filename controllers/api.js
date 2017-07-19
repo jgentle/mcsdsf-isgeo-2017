@@ -417,8 +417,8 @@ exports.getClockwork = (req, res) => {
 exports.postClockwork = (req, res, next) => {
   const message = {
     To: req.body.telephone,
-    From: 'Hackathon',
-    Content: 'Hello from the Hackathon Starter'
+    From: 'MCSDSF IS-GEO 2017',
+    Content: 'Hello from the MCSDSF IS-GEO 2017'
   };
   clockwork.sendSms(message, (err, responseData) => {
     if (err) { return next(err.errDesc); }
