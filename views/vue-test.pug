@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  div(class='content')
+    h1 #{ title }
+    p(id='msg') {{ message }}
+    form(class="pure-form pure-form-stacked")
+      fieldset
+          legend A Stacked Form
+          label(for="email") Email
+            input(id="email",type="email", placeholder="Email")
+          label(for="password") Password
+            input(id="password", type="password", placeholder="Password")
+          label(for="state") State
+            select(id="state")
+                option AL
+                option CA
+                option IL
+          input(type='text', "v-model"="message")
+          input(type="button", class="pure-button pure-button-primary", value="Sign in",  "v-on:click"='submitClick')
+  script.
+    var thisView = new Vue({
+      el:'#msg',
+      data: {
+        message : 'A Vue Message'
+      },
+      methods: {
+        submitClick: function() {
+          console.log('click');
+        }
+      }
+    });
+    console.log(thisView);

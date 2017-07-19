@@ -19,8 +19,8 @@ const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
-
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
+// const expressVue = require('express-vue');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -34,6 +34,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
+// const vueTestController = require('./controllers/vue-test');
 
 /**
  * API keys and Passport configuration.
@@ -60,8 +61,18 @@ mongoose.connection.on('error', (err) => {
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'pug');  // default.
+// Trying to integrate Vue.js - Not Working correctly yet.
+// app.engine('vue', expressVue);
+// app.set('view engine', 'vue');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('vue', {
+//     // ComponentsDir is optional if you are storing your components in a different directory than your views
+//     componentsDir: __dirname + '/views/components',
+//     // Default layout is optional it's a file and relative to the views path, it does not require a .vue extension.
+//     // If you want a custom layout set this to the location of your layout.vue file.
+//     defaultLayout: 'layout'
+// });
 app.use(expressStatusMonitor());
 app.use(compression());
 app.use(sass({
@@ -113,6 +124,8 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+// Path for using node_moduels in view templates.
+app.use('/scripts', express.static(path.join(__dirname, '/node_modules')));
 
 /**
  * Primary app routes.
@@ -134,6 +147,58 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+// app.get('/vue-test', vueTestController.index);
+/*
+app.get('/vue-test', (req, res, next) => {
+    res.render('layout', {
+        data: {
+            otherData: 'Something Else'
+        },
+        vue: {
+            head: {
+                title: 'Page Title',
+                head: [
+                    { property:'og:title', content: 'Page Title'},
+                    { name:'twitter:title', content: 'Page Title'},
+                ]
+            }
+        }
+    });
+})
+*/
+/*
+app.get('/vue-test', function (req, res){
+    var scope = {
+        data: {
+            title: pageTitle,
+            message: 'Hello!',
+            users: users
+        },
+        vue: {
+            head: {
+                title: pageTitle,
+                meta: [
+                    { property:'og:title', content: pageTitle},
+                    { name:'twitter:title', content: pageTitle}
+                ],
+                structuredData: {
+                    "@context": "http://schema.org",
+                    "@type": "Organization",
+                    "url": "http://www.your-company-site.com",
+                    "contactPoint": [{
+                        "@type": "ContactPoint",
+                        "telephone": "+1-401-555-1212",
+                        "contactType": "customer service"
+                    }]
+                }
+            },
+            components: ['users', 'messageComp'],
+            mixins: [exampleMixin]
+        }
+    };
+    res.render('index', scope);
+});
+*/
 
 /**
  * API examples routes.

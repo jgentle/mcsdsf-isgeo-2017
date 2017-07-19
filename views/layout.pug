@@ -5,7 +5,7 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     //- meta(name='theme-color' content='#4DA5F4')
-    meta(name='theme-color' content='#9900AA')
+    //- meta(name='theme-color' content='#9900AA')
     meta(name='csrf-token', content=_csrf)
     title #{title} - MCSDSF
     link(rel='shortcut icon', href='/favicon.png')
@@ -20,8 +20,13 @@ html
 
     //- include partials/footer
 
-    script(src='/js/lib/jquery-3.1.1.min.js')
-    script(src='/js/lib/bootstrap.min.js')
+    script(src='/scripts/jquery/dist/jquery.min.js')
+    script(src='/scripts/bootstrap-sass/assets/javascripts/bootstrap.min.js')
+    //- TODO: Integrate Vue.js properly as render-engine with pug.
+    //- DEV
+    //- script(src='/scripts/vue/dist/vue.js')
+    //- PROD
+    //- script(src='/scripts/vue/dist/vue.min.js')
     script(src='/js/main.js')
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
