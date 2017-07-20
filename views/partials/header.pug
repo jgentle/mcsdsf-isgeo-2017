@@ -7,7 +7,20 @@
         span.icon-bar
         span.icon-bar
       a.navbar-brand(href='/')
-        i.fa.fa-cubes
+        //- i.fa.fa-diamond
+        //- i.fa.fa-code
+        i.fa.fa-eye
+        //- i.fa.fa-rocket
+        //- i.fa.fa-globe
+        //- i.fa.fa-cubes
+        //- i.fa.fa-bullseye
+        //- i.fa.fa-crosshairs
+        //- i.fa.fa-map
+        //- i.fa.fa-pie-chart
+        //- i.fa.fa-bar-chart-o
+        //- i.fa.fa-line-chart
+        //- i.fa.fa-area-chart
+        //- img(src='/images/thumb.png').header-logo.pull-left
         | MCSDSF IS-GEO 2017
     .collapse.navbar-collapse
       ul.nav.navbar-nav
@@ -26,20 +39,26 @@
       ul.nav.navbar-nav.navbar-right
         li
           a(href='/')
+            i.fa.fa-home
+            //- i.fa.fa-dashboard
+            //- i.fa.fa-desktop
+            | Home
+        li
+          a(href='/data')
             i.fa.fa-database
             | Data
         li
-          a(href='/')
+          a(href='/settings')
             i.fa.fa-cog
             | Settings
+        li
+          a(href='/about')
+            i.fa.fa-info-circle
+            | About
         li
           a(href='/status')
             i.fa.fa-heartbeat
             | Status
-        li
-          a(href='/')
-            i.fa.fa-info-circle
-            | About
         //- if !user
           li(class=(title == 'Login') ? 'active' : undefined)
             a(href='/login') Login

@@ -35,6 +35,9 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 // const vueTestController = require('./controllers/vue-test');
+const dataController = require('./controllers/data');
+const settingsController = require('./controllers/settings');
+const aboutController = require('./controllers/about');
 
 /**
  * API keys and Passport configuration.
@@ -73,6 +76,9 @@ app.set('view engine', 'pug');  // default.
 //     // If you want a custom layout set this to the location of your layout.vue file.
 //     defaultLayout: 'layout'
 // });
+
+// Express Status Monitor must precede any other middleware.
+// Provides it's own route to '/status'.
 app.use(expressStatusMonitor());
 app.use(compression());
 app.use(sass({
@@ -124,6 +130,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+
 // Path for using node_moduels in view templates.
 app.use('/scripts', express.static(path.join(__dirname, '/node_modules')));
 
@@ -131,22 +138,30 @@ app.use('/scripts', express.static(path.join(__dirname, '/node_modules')));
  * Primary app routes.
  */
 app.get('/', homeController.index);
+
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
+
 app.get('/logout', userController.logout);
+
 app.get('/forgot', userController.getForgot);
 app.post('/forgot', userController.postForgot);
+
 app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
+
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
+
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
+
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+
 // app.get('/vue-test', vueTestController.index);
 /*
 app.get('/vue-test', (req, res, next) => {
@@ -199,6 +214,10 @@ app.get('/vue-test', function (req, res){
     res.render('index', scope);
 });
 */
+
+app.get('/data', dataController.index);
+app.get('/settings', settingsController.index);
+app.get('/about', aboutController.index);
 
 /**
  * API examples routes.
