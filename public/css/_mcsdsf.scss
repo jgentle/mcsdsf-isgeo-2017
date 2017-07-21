@@ -1,6 +1,19 @@
 // MCSDSF Custom SCSS.
+p {
+  margin-top: 1rem;
+}
+button {
+  margin: 0 0.5rem;
+}
 .header-logo {
   display: inline;
   max-height: 3rem;
   padding-right: 1rem;
+}
+.section-header {
+  display: inline;
+}
+.about-logo {
+  max-height: 10rem;
+  margin-right: 1rem;
 }

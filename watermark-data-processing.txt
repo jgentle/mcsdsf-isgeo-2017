@@ -112,7 +112,7 @@ REQUIREMENTS:
   -- snapshots can be loaded into Jupyter Notebooks
 
 CONSTRAINTS:
-  - Performance must be smooth!
+  - Performance must be smooth
   - Use workers wherever possible to get off the main thread
   - Use server side processing whenever possible to ease load on browser
   - Only serve and render the data being viewed on screen at any given time
