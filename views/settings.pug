@@ -2,4 +2,32 @@ extends layout
 
 block content
   .container
-    h1 #{ title }
+    //- h1 #{ title }
+    h1 Formulation Configuration
+
+    .row
+      //- form(action='' method='post')
+        label(for='data-format') Source Data Format
+        br
+        select(id='data-format' name='data-format')
+          option(value='csv') CSV
+          option(value='tsv') TSV
+          option(value='json') JSON
+          option(value='pipe') PIPE-DELIMITED
+        br
+        input(type='submit' value='Submit').btn.btn-sm.btn-default
+      
+      form
+        div.form-group
+          label(for='exampleSelect1') Example
+          select(id='exampleSelect1').form-control
+            option CSV
+            option TSV
+            option JSON
+            option GEOJSON
+            option PIPE-DELIMITED
+
+        div.form-group
+          label(for='exampleInputFile') File input
+          input(type='file' id='exampleInputFile' aria-describedby='fileHelp').form-control-file
+          small(id='fileHelp').form-text.text-muted This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.
