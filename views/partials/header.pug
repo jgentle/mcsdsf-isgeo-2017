@@ -7,44 +7,17 @@
         span.icon-bar
         span.icon-bar
       a.navbar-brand(href='/')
-        //- i.fa.fa-diamond
-        //- i.fa.fa-code
-        //- i.fa.fa-eye
-        //- i.fa.fa-rocket
         i.fa.fa-globe
-        //- i.fa.fa-cubes
-        //- i.fa.fa-bullseye
-        //- i.fa.fa-crosshairs
-        //- i.fa.fa-map
-        //- i.fa.fa-pie-chart
-        //- i.fa.fa-bar-chart-o
-        //- i.fa.fa-line-chart
-        //- i.fa.fa-area-chart
-        //- img(src='/images/thumb.png').header-logo.pull-left
-        | MCSDSF IS-GEO 2017
+        | MCSDSF
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        //- li(class=(title == 'Home') ? 'active' : undefined)
-          a(href='/') Home
-        //- li(class=(title == 'API Examples') ? 'active' : undefined)
-          a(href='/api') API Examples
-        //- li(class=(title == 'Contact') ? 'active' : undefined)
-          a(href='/contact') Contact
-        //- li
-          a(href='/vue-test')
-            i.fa.fa-try
-            | Vue-Test
+        //- EMPTY
       ul.nav.navbar-nav.navbar-right
-        //- li
+        li(class=(title == 'Dashboard') ? 'active' : undefined)
           a(href='/')
             i.fa.fa-home
-            //- i.fa.fa-desktop
-            | Home
-        //- li
-          a(href='/data')
-            i.fa.fa-database
-            | Data
-        li
+            | Dashboard
+        li(class=(title == 'Formulations') ? 'active' : undefined)
           a(href='/formulations')
             i.fa.fa-database
             | Formulations
@@ -52,21 +25,43 @@
           a(href='/settings')
             i.fa.fa-cog
             | Settings
-        li(class=(title == 'API Examples') ? 'active' : undefined)
-          a(href='/api') API Examples
-        li
+        //- li
+          a(href='/vue-test')
+            i.fa.fa-try
+            | Vue-Test
+        //- li(class=(title == 'API Examples') ? 'active' : undefined)
+          a(href='/api')
+            i.fa.fa-external-link
+            | API Examples
+        li(class=(title == 'About') ? 'active' : undefined)
           a(href='/about')
             i.fa.fa-info-circle
             | About
+        li(class=(title == 'Contact') ? 'active' : undefined)
+          a(href='/contact')
+            i.fa.fa-envelope
+            | Contact
         li
           a(href='/status')
             i.fa.fa-heartbeat
             | Status
+        li
+          a(href='https://github.com/jgentle/mcsdsf-isgeo-2017' target='_blank')
+            i.fa.fa-code
+            | GitHub
+        li
+          a(href='https://github.com/jgentle/mcsdsf-isgeo-2017/issues' target='_blank')
+            i.fa.fa-bug
+            | Issues
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)
-            a(href='/login') Login
+            a(href='/login')
+              i.fa.fa-sign-in
+              | Login
           li(class=(title == 'Create Account') ? 'active' : undefined)
-            a(href='/signup') Create Account
+            a(href='/signup')
+              i.fa.fa-plus
+              | Create Account
         else
           li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')
@@ -82,11 +77,3 @@
               li.divider
               li
                 a(href='/logout') Logout
-        li
-          a(href='https://github.com/jgentle/mcsdsf-isgeo-2017' target='_blank')
-            i.fa.fa-code
-            | GitHub
-        li
-          a(href='https://github.com/jgentle/mcsdsf-isgeo-2017/issues' target='_blank')
-            i.fa.fa-bug
-            | Issues

@@ -78,8 +78,7 @@ app.set('view engine', 'pug');  // default.
 //     defaultLayout: 'layout'
 // });
 
-// Express Status Monitor must precede any other middleware.
-// Provides it's own route to '/status'.
+// Express Status Monitor must precede any other middleware. Provides it's own route to '/status'.
 app.use(expressStatusMonitor());
 app.use(compression());
 app.use(sass({
@@ -144,13 +143,13 @@ app.use('/scripts', express.static(path.join(__dirname, '/node_modules')));
  * Routes
  */
 app.use('/', primary);
-app.use('/formulations', formulations);
-app.use('/formulation', formulation);
 app.use('/about', about);
 app.use('/api', apis);
 app.use('/auth', oauth);
-// app.get('/vue-test', vueTestController.index);
+app.use('/formulation', formulation);
+app.use('/formulations', formulations);
 // app.get('/settings', settingsController.index);
+// app.get('/vue-test', vueTestController.index);
 
 /**
  * Error Handler.

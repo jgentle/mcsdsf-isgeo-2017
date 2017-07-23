@@ -10,3 +10,15 @@ label {
 li {
   margin-bottom: 1rem;
 }
+.create-item, .item-formulation > a {
+  margin-left: 1rem;
+}
+.view-item {
+  color: #0A0;
+}
+.update-item {
+  color: #F90;
+}
+.delete-item {
+  color: #C00;
+}
