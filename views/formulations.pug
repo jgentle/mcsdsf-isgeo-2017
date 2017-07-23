@@ -8,8 +8,14 @@ block content
           for formulation in formulations
             li
               div Name: #{formulation.formulationName}
-              div Source File: #{formulation.dataSourceFile}
-              div Source File Type: #{formulation.dataSourceFileType}
-              div GIS Source File: #{formulation.geodataSourceFile}
-              div GIS Source File Type: #{formulation.geodataSourceFileType}
-            br
+              div
+                button.btn.btn-sm.btn-success(href='/formulation/get') View
+                button.btn.btn-sm.btn-warning(href='/formulation/update') Update
+                button.btn.btn-sm.btn-danger(href='/formulation/delete') Delete
+              //- div Source File: #{formulation.dataSourceFile}
+              //- div Source File Type: #{formulation.dataSourceFileType}
+              //- div GIS Source File: #{formulation.geodataSourceFile}
+              //- div GIS Source File Type: #{formulation.geodataSourceFileType}
+    .row
+      p Create A New Formulation
+        button.btn.btn-sm.btn-primary(href='/formulation') Create

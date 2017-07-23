@@ -201,3 +201,15 @@ https://github.com/jdesboeufs/connect-mongo
 
 MongoDB Basics:
 https://zellwk.com/blog/crud-express-mongodb/
+
+Express Routing:
+https://expressjs.com/en/guide/routing.html
+https://expressjs.com/en/starter/basic-routing.html
+
+  Supported HTTP methods:
+  get, post, put, head, delete, options, trace, copy, lock, mkcol, move, purge, propfind, proppatch, unlock, report, mkactivity, checkout, merge, m-search, notify, subscribe, unsubscribe, patch, search, connect
+
+  all() is special route for using middleware.
+
+  NOTE: To route methods that translate to invalid JavaScript variable names, use the bracket notation.
+    For example: app['m-search']('/', function {});

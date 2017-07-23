@@ -48,10 +48,12 @@
           a(href='/formulations')
             i.fa.fa-database
             | Formulations
-        li
+        //- li
           a(href='/settings')
             i.fa.fa-cog
             | Settings
+        li(class=(title == 'API Examples') ? 'active' : undefined)
+          a(href='/api') API Examples
         li
           a(href='/about')
             i.fa.fa-info-circle
