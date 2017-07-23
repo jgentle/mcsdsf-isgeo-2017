@@ -3,7 +3,11 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 
 const formulationsSchema = new mongoose.Schema({
-  name: String
+  formulationName: String,
+  dataSourceFile: String,
+  dataSourceFileType: String,
+  geodataSourceFile: String,
+  geodataSourceFileType: String
 });
 
 const Formulations = mongoose.model('Formulations', formulationsSchema);

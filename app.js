@@ -100,6 +100,11 @@ app.use(session({
     url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
     autoReconnect: true,
     clear_interval: 3600
+    // Any advanced mongodb configs should go here.
+    // Examples:
+    //  stringify   (if using unsupported types)
+    //  serialize   (modify session before writing out)
+    //  unserialize (modify session before using in app)
   })
 }));
 app.use(passport.initialize());

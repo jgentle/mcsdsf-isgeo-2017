@@ -28,13 +28,13 @@ exports.createFormulations = (req, res) => {
   console.log('POST received');
   console.log(req.body);
   res.redirect('/formulations');
-  // console.log(_csrf);
-  // db.collection('testformulations').save(req.body, (err, result) => {
-  //   if (err) return console.log(err)
-  //
-  //   console.log('saved formulation to database')
-  //   res.redirect('/formulations')
-  // })
+
+  Formulations.save(req.body, (err, result) => {
+    if (err) return console.log(err)
+
+    console.log('saved formulation to database')
+    res.redirect('/formulations')
+  })
   // console.log(`Created new formulation named ${name}.`);
 };
 

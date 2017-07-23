@@ -1,32 +1,60 @@
 extends layout
 
 block content
-  h3 Dashboard Configuration
+  h3 Formulation Configuration
   .container
     .row
       .col-xs-12.col-sm-6.col-md-6.col-lg-4
         form.form-horizontal(role='form', action='/formulations', method='POST')
-          //- CRSF Token
+          
+          //- CRSF Synchronization Token
           input(type='hidden', name='_csrf', value=_csrf)
-          //- Select Data Source File
+          
+          //- Formulation Name
           fieldset.form-group
-            label(for='exampleInputFile') Source Data File
-            input(type='file' id='exampleInputFile' aria-describedby='fileHelp').form-control-file
-            small(id='fileHelp').form-text.text-muted The data source that will be used for the current formulation.
-          //- Select Data Source File Type
+            label(for='formulationName') Formulation Name
+            input.form-control(type='text' name='formulationName' id='formulationName' placeholder='Enter Formulation Name')
+          
+          //- Select Source Data File
+          fieldset.form-group
+            label(for='dataSourceFile') Source Data File
+            input.form-control-file(type='file' name='dataSourceFile' id='dataSourceFile' aria-describedby='dataSourceFileHelp')
+            small.form-text.text-muted(id='dataSourceFileHelp') The data source that will be used for the current formulation.
+          
+          //- Select Source Data File Type
           fieldset.form-group
             label Source Data File Format
             div.form-check
-              input.form-check-input(type='radio' name='options' id='option1' value='csv' checked)
+              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_csv' value='csv' checked)
               label.form-check-label CSV
             div.form-check
-              input.form-check-input(type='radio' name='options' id='option2' value='tsv')
+              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_tsv' value='tsv')
               label.form-check-label TSV
             div.form-check
-              input.form-check-input(type='radio' name='options' id='option3' value='json')
+              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_json' value='json')
               label.form-check-label JSON
             div.form-check
-              input.form-check-input(type='radio' name='options' id='option4' value='pipe-delimited' disabled)
-              label.form-check-label PIPE-DELIMITED (under development)
+              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_piped' value='piped' disabled)
+              label.form-check-label Pipe-delimited (under development)
+          
+          //- Select Source GeoData File
+          fieldset.form-group
+            label(for='geodataSourceFile') Source GIS Data File
+            input.form-control-file(type='file' name='geodataSourceFile' id='geodataSourceFile' aria-describedby='geodataSourceFileHelp')
+            small.form-text.text-muted(id='geodataSourceFileHelp') The GIS data source that will be used for the current formulation.
+          
+          //- Select Source Geodata File Type
+          fieldset.form-group
+            label Source Geodata File Format
+            div.form-check
+              input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_csv' value='geojson' checked)
+              label.form-check-label GeoJSON
+            div.form-check
+              input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_tsv' value='topojson')
+              label.form-check-label TopoJSON
+            div.form-check
+              input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_piped' value='shapefile' disabled)
+              label.form-check-label ESRI Shapefile (under development)
+            
           //- POST Form Data
           button(type='submit') SUBMIT

@@ -175,10 +175,9 @@ Modflow + Mapping:
 Crossfilter Dashboard:
 /Users/jgentle/Code/code_practices/javascript/crossfilter/dashing-d3-leanpub-example
 
+======================================================================
 
-MongoDB Basics:
-https://zellwk.com/blog/crud-express-mongodb/
-
+Development Refs:
 
 CRSF:
 https://halls-of-valhalla.org/beta/articles/cross-site-request-forgery-demystified,47/
@@ -186,3 +185,19 @@ https://halls-of-valhalla.org/beta/articles/cross-site-request-forgery-demystifi
 CRSF Issues:
 https://elements.heroku.com/buttons/rt-heroku/hackathon-starter
 https://github.com/sahat/hackathon-starter/pull/40
+
+Lusca (CRSF Module):
+https://github.com/krakenjs/lusca
+https://npmdoc.github.io/node-npmdoc-lusca/build/apidoc.html
+
+Sessions vs Cookies:
+https://www.rithmschool.com/courses/intermediate-node-express/express-cookies-sessions
+
+Key Generator:
+https://randomkeygen.com/
+
+MongoDB:
+https://github.com/jdesboeufs/connect-mongo
+
+MongoDB Basics:
+https://zellwk.com/blog/crud-express-mongodb/
