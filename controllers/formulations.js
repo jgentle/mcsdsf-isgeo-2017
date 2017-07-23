@@ -2,7 +2,7 @@ const bluebird = require('bluebird');
 const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
 const passport = require('passport');
-const Formulations = require('../models/Formulations.js');
+const Formulation = require('../models/Formulation.js');
 
 /**
  * GET /formulations
@@ -10,48 +10,70 @@ const Formulations = require('../models/Formulations.js');
  */
 
 exports.getFormulations = (req, res) => {
-  Formulations.find((err, formulations) => {
+  Formulation.find((err, formulations) => {
     res.render('formulations', {
       title: 'Formulations',
       formulations: formulations
     });
-    console.log(`All formulations listed.`);
+    console.log(`All formulations.`);
   });
 };
 
 /**
- * POST /formulations
+ * GET /formulation
+ * List a formulation.
+ */
+
+exports.getFormulation = (req, res) => {
+  Formulation.find((err, formulation) => {
+    res.render('formulation', {
+      title: 'Formulation',
+      formulation: formulation
+    });
+    console.log(`Current formulation.`);
+  });
+};
+
+/**
+ * POST /formulation
  * Create a formulation.
  */
 
-exports.createFormulations = (req, res) => {
+exports.createFormulation = (req, res) => {
   console.log('POST received');
   console.log(req.body);
-  res.redirect('/formulations');
 
-  Formulations.save(req.body, (err, result) => {
-    if (err) return console.log(err)
+  const formulation = new Formulation({
+    formulationName: req.body.formulationName,
+    dataSourceFile: req.body.dataSourceFile,
+    dataSourceFileType: req.body.dataSourceFileType,
+    geodataSourceFile: req.body.geodataSourceFile,
+    geodataSourceFileType: req.body.geodataSourceFileType,
+  });
 
-    console.log('saved formulation to database')
+  formulation.save(req.body, (err, result) => {
+    if (err) { return console.log(err) }
+
+    console.log(`Created new formulation named ${formulationName}.`);
+    console.log('saved to database')
     res.redirect('/formulations')
   })
-  // console.log(`Created new formulation named ${name}.`);
 };
 
 /**
- * UPDATE /formulations
+ * UPDATE /formulation
  * Update a formulation.
  */
 
-exports.updateFormulations = (req, res) => {
-  console.log(`Updated formulation named ${name}.`);
+exports.updateFormulation = (req, res) => {
+  console.log(`Updated formulation named ${formulationName}.`);
 };
 
 /**
- * DELETE /formulations
+ * DELETE /formulation
  * Delete a formulation.
  */
 
-exports.deleteFormulations = (req, res) => {
-  console.log(`Deleted formulation named ${name}.`);
+exports.deleteFormulation = (req, res) => {
+  console.log(`Deleted formulation named ${formulationName}.`);
 };

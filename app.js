@@ -174,11 +174,12 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
  * MCSDSF Routes
  */
 // app.get('/vue-test', vueTestController.index);
+// Need to resolve multiple vs singular issues.
 app.route('/formulations')
   .get(formulationsController.getFormulations)
-  .post(formulationsController.createFormulations)
-  .put(formulationsController.updateFormulations)
-  .delete(formulationsController.deleteFormulations);
+  .post(formulationsController.createFormulation)
+  .put(formulationsController.updateFormulation)
+  .delete(formulationsController.deleteFormulation);
 
 app.get('/settings', settingsController.index);
 app.get('/about', aboutController.index);

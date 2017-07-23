@@ -6,4 +6,10 @@ block content
       .row
         ul
           for formulation in formulations
-            li= formulation.name
+            li
+              div Name: #{formulation.formulationName}
+              div Source File: #{formulation.dataSourceFile}
+              div Source File Type: #{formulation.dataSourceFileType}
+              div GIS Source File: #{formulation.geodataSourceFile}
+              div GIS Source File Type: #{formulation.geodataSourceFileType}
+            br
