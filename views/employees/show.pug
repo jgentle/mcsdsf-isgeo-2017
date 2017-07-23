@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  .container
+    h3 Employee Detail
+      table
+        tbody
+          tr
+            td Name
+            td :
+            td #{employee.name}
+          tr
+            td Address
+            td :
+            td #{employee.address}
+          tr
+            td Position
+            td :
+            td #{employee.position}
+          tr
+            td Salary
+            td :
+            td $#{employee.salary}/year
+      h2
+        a(href="/employees/edit/#{employee._id}") EDIT
+      form(action="/employees/delete/#{employee._id}" method="post")
+        //- CRSF Synchronization Token
+        input(type='hidden', name='_csrf', value=_csrf)
+        button(type="submit") DELETE

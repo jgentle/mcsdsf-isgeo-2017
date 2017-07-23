@@ -10,7 +10,7 @@
         i.fa.fa-globe
         | MCSDSF
     .collapse.navbar-collapse
-      ul.nav.navbar-nav
+      //- ul.nav.navbar-nav
         //- EMPTY
       ul.nav.navbar-nav.navbar-right
         li(class=(title == 'Dashboard') ? 'active' : undefined)
@@ -21,6 +21,14 @@
           a(href='/formulations')
             i.fa.fa-database
             | Formulations
+        li(class=(title == 'Employees') ? 'active' : undefined)
+          a(href='/employees')
+            i.fa.fa-database
+            | Employees
+        //- li
+          a(href='/status')
+            i.fa.fa-heartbeat
+            | Status
         //- li
           a(href='/settings')
             i.fa.fa-cog
@@ -41,10 +49,6 @@
           a(href='/contact')
             i.fa.fa-envelope
             | Contact
-        li
-          a(href='/status')
-            i.fa.fa-heartbeat
-            | Status
         li
           a(href='https://github.com/jgentle/mcsdsf-isgeo-2017' target='_blank')
             i.fa.fa-code

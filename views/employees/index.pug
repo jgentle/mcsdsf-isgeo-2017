@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  .container
+    h3 Employees Index
+    a(href="/employees/create") Create Employee
+    
+    h1 Employees List
+      if(employees != null)
+        table
+          thead
+            tr
+              th Employee
+              th Position
+            for employee in employees
+              tr
+                td
+                  a(href="/employees/show/" + employee._id) #{employee.name}
+                td #{employee.position}
+      else
+        div No employees found.

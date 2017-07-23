@@ -10,14 +10,33 @@ const Formulation = require('../models/Formulation.js');
  */
 
 exports.getFormulation = (req, res) => {
-  Formulation.find((err, formulation) => {
+  // Formulation.find((err, formulation) => {
+  //   res.render('formulation', {
+  //     title: 'Formulation',
+  //     formulation: formulation
+  //   });
+  //   console.log(`Current formulation.`);
+  // });
+  Formulation.findOne({_id: req.params.id}, function(err, formulation) {
+    console.log(req.params);
     res.render('formulation', {
       title: 'Formulation',
       formulation: formulation
     });
-    console.log(`Current formulation.`);
+    console.log('Current formulation:', formulation);
   });
 };
+
+// employeeController.show = function(req, res) {
+//   Employee.findOne({_id: req.params.id}).exec(function (err, employee) {
+//     if (err) {
+//       console.log("Error:", err);
+//     }
+//     else {
+//       res.render("../views/employees/show", {employee: employee});
+//     }
+//   });
+// };
 
 /**
  * POST /formulation
