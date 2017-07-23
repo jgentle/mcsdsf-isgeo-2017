@@ -22,8 +22,8 @@ block content
             td :
             td $#{employee.salary}/year
       h2
-        a(href="/employees/edit/#{employee._id}") EDIT
-      form(action="/employees/delete/#{employee._id}" method="post")
+        a(href="/employees/edit/"+employee._id) EDIT
+      form(action="/employees/delete/"+employee._id method="post")
         //- CRSF Synchronization Token
         input(type='hidden', name='_csrf', value=_csrf)
         button(type="submit") DELETE
