@@ -35,7 +35,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 // const vueTestController = require('./controllers/vue-test');
-const dataController = require('./controllers/data');
+const formulationsController = require('./controllers/formulations');
 const settingsController = require('./controllers/settings');
 const aboutController = require('./controllers/about');
 
@@ -65,7 +65,10 @@ mongoose.connection.on('error', (err) => {
  */
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'pug');  // default.
-// Trying to integrate Vue.js - Not Working correctly yet.
+
+/**
+ * Trying to integrate Vue.js - Not Working correctly yet.
+ */
 // app.engine('vue', expressVue);
 // app.set('view engine', 'vue');
 // app.set('views', path.join(__dirname, 'views'));
@@ -162,60 +165,16 @@ app.post('/account/password', passportConfig.isAuthenticated, userController.pos
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
+/**
+ * MCSDSF Routes
+ */
 // app.get('/vue-test', vueTestController.index);
-/*
-app.get('/vue-test', (req, res, next) => {
-    res.render('layout', {
-        data: {
-            otherData: 'Something Else'
-        },
-        vue: {
-            head: {
-                title: 'Page Title',
-                head: [
-                    { property:'og:title', content: 'Page Title'},
-                    { name:'twitter:title', content: 'Page Title'},
-                ]
-            }
-        }
-    });
-})
-*/
-/*
-app.get('/vue-test', function (req, res){
-    var scope = {
-        data: {
-            title: pageTitle,
-            message: 'Hello!',
-            users: users
-        },
-        vue: {
-            head: {
-                title: pageTitle,
-                meta: [
-                    { property:'og:title', content: pageTitle},
-                    { name:'twitter:title', content: pageTitle}
-                ],
-                structuredData: {
-                    "@context": "http://schema.org",
-                    "@type": "Organization",
-                    "url": "http://www.your-company-site.com",
-                    "contactPoint": [{
-                        "@type": "ContactPoint",
-                        "telephone": "+1-401-555-1212",
-                        "contactType": "customer service"
-                    }]
-                }
-            },
-            components: ['users', 'messageComp'],
-            mixins: [exampleMixin]
-        }
-    };
-    res.render('index', scope);
-});
-*/
+app.route('/formulations')
+  .get(formulationsController.getFormulations)
+  .post(formulationsController.createFormulations)
+  .put(formulationsController.updateFormulations)
+  .delete(formulationsController.deleteFormulations);
 
-app.get('/data', dataController.index);
 app.get('/settings', settingsController.index);
 app.get('/about', aboutController.index);
 

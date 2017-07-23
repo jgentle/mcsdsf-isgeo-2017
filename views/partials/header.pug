@@ -31,8 +31,6 @@
         //- li(class=(title == 'Contact') ? 'active' : undefined)
           a(href='/contact') Contact
         //- li
-          a(href='/status') Status
-        //- li
           a(href='/vue-test')
             i.fa.fa-try
             | Vue-Test
@@ -47,6 +45,10 @@
             i.fa.fa-database
             | Data
         li
+          a(href='/formulations')
+            i.fa.fa-database
+            | Formulations
+        li
           a(href='/settings')
             i.fa.fa-cog
             | Settings
@@ -58,12 +60,12 @@
           a(href='/status')
             i.fa.fa-heartbeat
             | Status
-        //- if !user
+        if !user
           li(class=(title == 'Login') ? 'active' : undefined)
             a(href='/login') Login
           li(class=(title == 'Create Account') ? 'active' : undefined)
             a(href='/signup') Create Account
-        //- else
+        else
           li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               if user.profile.picture

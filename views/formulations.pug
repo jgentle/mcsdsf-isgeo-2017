@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h3 All Formulations
+    .container
+      .row
+        ul
+          for formulation in formulations
+            li= formulation.name

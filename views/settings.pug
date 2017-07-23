@@ -1,33 +1,32 @@
 extends layout
 
 block content
+  h3 Dashboard Configuration
   .container
-    //- h1 #{ title }
-    h1 Formulation Configuration
-
     .row
-      //- form(action='' method='post')
-        label(for='data-format') Source Data Format
-        br
-        select(id='data-format' name='data-format')
-          option(value='csv') CSV
-          option(value='tsv') TSV
-          option(value='json') JSON
-          option(value='pipe') PIPE-DELIMITED
-        br
-        input(type='submit' value='Submit').btn.btn-sm.btn-default
-      
-      form
-        div.form-group
-          label(for='exampleSelect1') Example
-          select(id='exampleSelect1').form-control
-            option CSV
-            option TSV
-            option JSON
-            option GEOJSON
-            option PIPE-DELIMITED
-
-        div.form-group
-          label(for='exampleInputFile') File input
-          input(type='file' id='exampleInputFile' aria-describedby='fileHelp').form-control-file
-          small(id='fileHelp').form-text.text-muted This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.
+      .col-xs-12.col-sm-6.col-md-6.col-lg-4
+        form.form-horizontal(role='form', action='/formulations', method='POST')
+          //- CRSF Token
+          input(type='hidden', name='_csrf', value=_csrf)
+          //- Select Data Source File
+          fieldset.form-group
+            label(for='exampleInputFile') Source Data File
+            input(type='file' id='exampleInputFile' aria-describedby='fileHelp').form-control-file
+            small(id='fileHelp').form-text.text-muted The data source that will be used for the current formulation.
+          //- Select Data Source File Type
+          fieldset.form-group
+            label Source Data File Format
+            div.form-check
+              input.form-check-input(type='radio' name='options' id='option1' value='csv' checked)
+              label.form-check-label CSV
+            div.form-check
+              input.form-check-input(type='radio' name='options' id='option2' value='tsv')
+              label.form-check-label TSV
+            div.form-check
+              input.form-check-input(type='radio' name='options' id='option3' value='json')
+              label.form-check-label JSON
+            div.form-check
+              input.form-check-input(type='radio' name='options' id='option4' value='pipe-delimited' disabled)
+              label.form-check-label PIPE-DELIMITED (under development)
+          //- POST Form Data
+          button(type='submit') SUBMIT

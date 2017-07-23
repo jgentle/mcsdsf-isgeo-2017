@@ -174,3 +174,15 @@ Modflow + Mapping:
 
 Crossfilter Dashboard:
 /Users/jgentle/Code/code_practices/javascript/crossfilter/dashing-d3-leanpub-example
+
+
+MongoDB Basics:
+https://zellwk.com/blog/crud-express-mongodb/
+
+
+CRSF:
+https://halls-of-valhalla.org/beta/articles/cross-site-request-forgery-demystified,47/
+
+CRSF Issues:
+https://elements.heroku.com/buttons/rt-heroku/hackathon-starter
+https://github.com/sahat/hackathon-starter/pull/40
