@@ -1,34 +1,35 @@
 extends ../layout
 
 block content
-	h3 New Formulation
+	h3 Data Upload
 	.container
 		.row
 			.col-xs-12.col-sm-6.col-md-6.col-lg-4
-				form.form-horizontal(role='form', action='/formulations/save', method='post')
+				form.form-horizontal(role='form', action='/datasources/save', method='post')
 
 					//- CRSF Synchronization Token
 					input(type='hidden', name='_csrf', value=_csrf)
 
 					//- Formulation Name
 					fieldset.form-group
-						label(for='formulationName') Formulation Name
-						input.form-control(type='text' name='formulationName' id='formulationName' placeholder='Enter Formulation Name')
+						label(for='name') Data Source Name
+						input.form-control(type='text' name='name' id='name' placeholder='Enter Data Source Name')
 
-					//- REFACTOR
-					//- This will need to populate dropdowns based on datasources now.
-					//- One for nonGeospatial
-					//- One for Geospatial
-
-					//- Select Source Data File
+					//- NonGeospation vs Geospatial toggle.
+					//- Make remainder fo form dynamic based on selection.
 					fieldset.form-group
-						label(for='dataSourceFile') Source Data File
-						input.form-control-file.btn.btn-sm.btn-primary(type='file' name='dataSourceFile' id='dataSourceFile' aria-describedby='dataSourceFileHelp')
-						small.form-text.text-muted(id='dataSourceFileHelp') The data source that will be used for the current formulation.
+						label Is this Data Source Geospatial?
+						div.form-check
+							input.form-check-input(type='radio' name='dataSourceGespatial' id='dataSourceGespatial_true' value='true')
+							label.form-check-label True
+						div.form-check
+							input.form-check-input(type='radio' name='dataSourceGespatial' id='dataSourceGespatial_false' value='false')
+							label.form-check-label False
 
+					//- IF nonGeospatial
 					//- Select Source Data File Type
 					fieldset.form-group
-						label Source Data File Format
+						label Source File Data Format
 						div.form-check
 							input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_csv' value='csv')
 							label.form-check-label CSV
@@ -42,15 +43,10 @@ block content
 							input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_piped' value='piped' disabled)
 							label.form-check-label Pipe-delimited (under development)
 
-					//- Select Source GeoData File
-					fieldset.form-group
-						label(for='geodataSourceFile') Source GIS Data File
-						input.form-control-file.btn.btn-sm.btn-success(type='file' name='geodataSourceFile' id='geodataSourceFile' aria-describedby='geodataSourceFileHelp')
-						small.form-text.text-muted(id='geodataSourceFileHelp') The GIS data source that will be used for the current formulation.
-
+					//- IF Geospatial
 					//- Select Source Geodata File Type
 					fieldset.form-group
-						label Source Geodata File Format
+						label Source File Geospatial Data Format
 						div.form-check
 							input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_csv' value='geojson')
 							label.form-check-label GeoJSON
@@ -61,6 +57,12 @@ block content
 							input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_piped' value='shapefile' disabled)
 							label.form-check-label ESRI Shapefile (under development)
 
+					//- Select Source Data File
+					fieldset.form-group
+						label(for='dataSourceFile') Data Source File
+						input.form-control-file.btn.btn-sm.btn-primary(type='file' name='dataSourceFile' id='dataSourceFile' aria-describedby='dataSourceFileHelp')
+						small.form-text.text-muted(id='dataSourceFileHelp') The data source that will be used for the current formulation.
+
 					//- POST Form Data
 					button.btn-create.btn.btn-sm.btn-primary(type='submit' value='Save') Create
-					a.btn.btn-sm.btn-danger(href='/formulations') Cancel
+					a.btn.btn-sm.btn-danger(href='/datasources') Cancel

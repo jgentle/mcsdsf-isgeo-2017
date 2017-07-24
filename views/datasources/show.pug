@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  h3 Data Source: #{datasource.name}
+  .container
+    .row
+      .col-xs-12
+        div.datasource-view
+          div.item-attributes
+            strong Name:
+            | #{datasource.name}
+          div.item-attributes
+            strong  Data Source File:
+            | #{datasource.sourceFile}
+          div.item-attributes
+            strong  Contains Geospatial Data:
+            | #{datasource.geospatialData}
+          div.item-attributes
+            strong  Data Source File Type:
+            | #{datasource.dataType}
+          a.view-all-btn.btn.btn-xs.btn-success(href='/datasources') View All
+          form(action='/datasources/delete/'+datasource._id method='post')
+            //- CRSF Synchronization Token
+            input(type='hidden', name='_csrf', value=_csrf)
+            button.delete-btn.btn.btn-xs.btn-danger(type='submit') Delete

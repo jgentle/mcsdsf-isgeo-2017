@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const formulationController = require('../controllers/formulation');
+const formulationsController = require('../controllers/formulations');
 
 // middleware
 // router.use(function timeLog (req, res, next) {
@@ -11,24 +11,24 @@ const formulationController = require('../controllers/formulation');
 // define routes.
 
 // Get all formulations
-router.get('/', formulationController.list);
+router.get('/', formulationsController.list);
 
 // Get single formulation by id
-router.get('/show/:id', formulationController.show);
+router.get('/show/:id', formulationsController.show);
 
 // Create formulation
-router.get('/create', formulationController.create);
+router.get('/create', formulationsController.create);
 
 // Save formulation
-router.post('/save', formulationController.save);
+router.post('/save', formulationsController.save);
 
 // Edit formulation
-router.get('/edit/:id', formulationController.edit);
+router.get('/edit/:id', formulationsController.edit);
 
 // Edit update
-router.post('/update/:id', formulationController.update);
+router.post('/update/:id', formulationsController.update);
 
 // Edit update
-router.post('/delete/:id', formulationController.delete);
+router.post('/delete/:id', formulationsController.delete);
 
 module.exports = router;

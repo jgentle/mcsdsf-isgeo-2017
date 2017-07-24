@@ -22,7 +22,7 @@
             i.fa.fa-flask
             | Formulations
         li(class=(title == 'Data') ? 'active' : undefined)
-          a(href='/data')
+          a(href='/datasources')
             i.fa.fa-database
             | Data
         li(class=(title == 'About') ? 'active' : undefined)
@@ -30,25 +30,9 @@
             i.fa.fa-info-circle
             | About
         li
-          a(href='/status')
+          a(href='/status' target='_blank')
             i.fa.fa-heartbeat
             | Status
-        //- li
-          a(href='/vue-test')
-            i.fa.fa-try
-            | Vue-Test
-        //- li(class=(title == 'Employees') ? 'active' : undefined)
-          a(href='/employees')
-            i.fa.fa-database
-            | Employees
-        li(class=(title == 'API Examples') ? 'active' : undefined)
-          a(href='/api')
-            i.fa.fa-external-link
-            | API Examples
-        //- li(class=(title == 'Contact') ? 'active' : undefined)
-          a(href='/contact')
-            i.fa.fa-envelope
-            | Contact
         li
           a(href='https://github.com/jgentle/mcsdsf-isgeo-2017' target='_blank')
             i.fa.fa-code
@@ -81,3 +65,20 @@
               li.divider
               li
                 a(href='/logout') Logout
+        //- Experiments
+        //- li
+          a(href='/vue-test')
+            i.fa.fa-try
+            | Vue-Test
+        //- li(class=(title == 'Employees') ? 'active' : undefined)
+          a(href='/employees')
+            i.fa.fa-database
+            | Employees
+        //- li(class=(title == 'API Examples') ? 'active' : undefined)
+          a(href='/api')
+            i.fa.fa-external-link
+            | API Examples
+        //- li(class=(title == 'Contact') ? 'active' : undefined)
+          a(href='/contact')
+            i.fa.fa-envelope
+            | Contact

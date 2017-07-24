@@ -1,0 +1,42 @@
+extends ../layout
+
+block content
+	h3 Data Sources
+	.container
+		.row
+			if (datasources != null)
+				.col-sm-12.col-lg-6
+					h4 Non-geospatial Data Sources
+					for datasource in datasources
+						if (datasource.geospatialData = false)
+							ul
+								li
+									div.item-datasource #{datasource.name}
+									div.item-datasource #{datasource.dataType}
+										form(action='/datasources/delete/'+datasource._id method='post')
+											//- CRSF Synchronization Token
+											input(type='hidden', name='_csrf', value=_csrf)
+											button.btn.btn-xs.btn-danger.pull-right(type='submit') Delete
+										a.btn.btn-xs.btn-success.pull-right(href='/datasources/show/' + datasource._id) View
+						else
+							div No datasources found.
+				.col-sm-12.col-lg-6
+					h4 Geospatial Data Sources
+					for datasource in datasources
+						if (datasource.geospatialData = true)
+							ul
+								li
+									div.item-datasource #{datasource.name}
+									div.item-datasource #{datasource.dataType}
+										form(action='/datasources/delete/'+datasource._id method='post')
+											//- CRSF Synchronization Token
+											input(type='hidden', name='_csrf', value=_csrf)
+											button.btn.btn-xs.btn-danger.pull-right(type='submit') Delete
+										a.btn.btn-xs.btn-success.pull-right(href='/datasources/show/' + datasource._id) View
+						else
+							div No geospatial datasources found.
+			else
+				div No datasources found.
+		.row
+			p Upload a new Data Source
+				a.btn.btn-sm.btn-primary.create-btn(href='/datasources/upload') Upload

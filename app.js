@@ -18,6 +18,8 @@ const passport = require('passport');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
+const fs = require('fs');
+const grid = require('gridfs-stream');
 const multer = require('multer');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 // const expressVue = require('express-vue');
@@ -34,7 +36,7 @@ const primary = require('./routes/primary');
 const apis = require('./routes/apis');
 const oauth = require('./routes/oauth');
 const formulations = require('./routes/formulations');
-// const formulation = require('./routes/formulation');
+const datasources = require('./routes/datasources');
 const about = require('./routes/about');
 // const employees = require('./routes/employees');
 /**
@@ -146,9 +148,8 @@ app.use('/', primary);
 app.use('/about', about);
 app.use('/api', apis);
 app.use('/auth', oauth);
-// app.use('/formulation', formulation);
 app.use('/formulations', formulations);
-// app.get('/settings', settingsController.index);
+app.use('/datasources', datasources);
 // app.get('/vue-test', vueTestController.index);
 // app.use('/employees', employees);
 

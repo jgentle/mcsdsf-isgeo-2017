@@ -1,6 +1,17 @@
-// MCSDSF Custom SCSS.
 p {
   margin-top: 1rem;
+}
+button {
+  margin: 0 0.5rem;
+}
+select {
+  min-width: 9rem;
+}
+label {
+  margin-left: 1rem;
+}
+li {
+  margin-bottom: 1rem;
 }
 .header-logo {
   display: inline;
@@ -16,4 +27,25 @@ p {
 }
 .contact-link {
   margin-left: 1rem;
+}
+.create-btn {
+  margin-left: 1rem;
+}
+.btn-create {
+  margin-right: 2rem;
+}
+.view-all-btn, .edit-btn, .delete-btn {
+  margin-top: 0.5rem;
+}
+.view-all-btn{
+  margin-right: 1rem;
+}
+.edit-btn {
+  margin-right: 0.5rem;
+}
+.delete-btn {
+  // margin-top: -2rem;
+}
+.item-attributes > strong {
+  margin-right: 1rem;
 }

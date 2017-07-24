@@ -1,9 +1,9 @@
 const Formulation = require('../models/Formulation.js');
 
-const formulationController = {};
+const formulationsController = {};
 
 // List All
-formulationController.list = function(req, res) {
+formulationsController.list = function(req, res) {
   Formulation.find({}).exec(function (err, formulations) {
     if (err) {
       console.log("Error:", err);
@@ -18,7 +18,7 @@ formulationController.list = function(req, res) {
 };
 
 // Find by _id
-formulationController.show = function(req, res) {
+formulationsController.show = function(req, res) {
   Formulation.findOne({_id: req.params.id}).exec(function (err, formulation) {
     if (err) {
       console.log("Error:", err);
@@ -33,14 +33,14 @@ formulationController.show = function(req, res) {
 };
 
 // Create (redirect to form)
-formulationController.create = function(req, res) {
+formulationsController.create = function(req, res) {
   res.render("formulations/create", {
     title: 'Create Formulation'
   });
 };
 
 // Save new Formulation
-formulationController.save = function(req, res) {
+formulationsController.save = function(req, res) {
   var formulation = new Formulation(req.body);
 
   formulation.save(function(err) {
@@ -55,7 +55,7 @@ formulationController.save = function(req, res) {
 };
 
 // Edit Formulation
-formulationController.edit = function(req, res) {
+formulationsController.edit = function(req, res) {
   Formulation.findOne({_id: req.params.id}).exec(function (err, formulation) {
     if (err) {
       console.log("Error:", err);
@@ -70,7 +70,7 @@ formulationController.edit = function(req, res) {
 };
 
 // Update Formulation
-formulationController.update = function(req, res) {
+formulationsController.update = function(req, res) {
   Formulation.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true }, function (err, formulation) {
     if (err) {
       console.log(err);
@@ -84,7 +84,7 @@ formulationController.update = function(req, res) {
 };
 
 // Delete Formulation
-formulationController.delete = function(req, res) {
+formulationsController.delete = function(req, res) {
   Formulation.remove({_id: req.params.id}, function(err) {
     if(err) {
       console.log(err);
@@ -97,4 +97,4 @@ formulationController.delete = function(req, res) {
 };
 
 // Export controller.
-module.exports = formulationController;
+module.exports = formulationsController;
