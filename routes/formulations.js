@@ -11,4 +11,4 @@ const formulationsController = require('../controllers/formulations');
 // define routes.
 router.get('/', formulationsController.getFormulations);
 
-module.exports = router
+module.exports = router;

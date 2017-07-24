@@ -52,4 +52,4 @@ router.delete('/', formulationController.deleteFormulation);
 //   .put(formulationController.updateFormulation)
 //   .delete(formulationController.deleteFormulation);
 
-module.exports = router
+module.exports = router;

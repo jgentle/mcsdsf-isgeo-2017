@@ -11,19 +11,19 @@ block content
           tr
             td Name
             td
-              input(type="text" name="name" value="#{employee.name}")
+              input(type="text" name="name" value=employee.name)
           tr
             td Address
             td
-              textarea(name="address" value="{employee.address}")
+              textarea(name="address" value=employee.address)
           tr
             td Position
             td
-              input(type="text" name="position" value="{employee.position}")
+              input(type="text" name="position" value=employee.position)
           tr
             td Salary
             td
-              input(type="number" name="salary" value="{employee.salary}")
+              input(type="number" name="salary" value=employee.salary)
           tr
             td(colspan="2")
             button(type="submit") Update

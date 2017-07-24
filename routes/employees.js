@@ -31,4 +31,4 @@ router.post('/update/:id', employeeController.update);
 // Edit update
 router.post('/delete/:id', employeeController.delete);
 
-module.exports = router
+module.exports = router;

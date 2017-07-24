@@ -37,4 +37,4 @@ router.post('/account/password', passportConfig.isAuthenticated, userController.
 router.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 router.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
-module.exports = router
+module.exports = router;

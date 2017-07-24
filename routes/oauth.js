@@ -56,4 +56,4 @@ router.get('/pinterest/callback', passport.authorize('pinterest', { failureRedir
   res.redirect('/api/pinterest');
 });
 
-module.exports = router
+module.exports = router;

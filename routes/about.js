@@ -11,4 +11,4 @@ const aboutController = require('../controllers/about');
 // define routes
 router.get('/', aboutController.index);
 
-module.exports = router
+module.exports = router;

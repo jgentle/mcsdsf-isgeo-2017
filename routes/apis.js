@@ -43,4 +43,4 @@ router.get('/pinterest', passportConfig.isAuthenticated, passportConfig.isAuthor
 router.post('/pinterest', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.postPinterest);
 router.get('/google-maps', apiController.getGoogleMaps);
 
-module.exports = router
+module.exports = router;
