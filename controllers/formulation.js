@@ -1,116 +1,86 @@
-const bluebird = require('bluebird');
-const crypto = bluebird.promisifyAll(require('crypto'));
-const nodemailer = require('nodemailer');
-const passport = require('passport');
 const Formulation = require('../models/Formulation.js');
 
-/**
- * GET /formulation
- * List a formulation.
- */
+const formulationController = {};
 
-exports.getFormulation = (req, res) => {
-  // Formulation.find((err, formulation) => {
-  //   res.render('formulation', {
-  //     title: 'Formulation',
-  //     formulation: formulation
-  //   });
-  //   console.log(`Current formulation.`);
-  // });
-  Formulation.findOne({_id: req.params.id}, function(err, formulation) {
-    console.log(req.params);
-    res.render('formulation', {
-      title: 'Formulation',
-      formulation: formulation
-    });
-    console.log('Current formulation:', formulation);
-  });
-};
-
-// employeeController.show = function(req, res) {
-//   Employee.findOne({_id: req.params.id}).exec(function (err, employee) {
-//     if (err) {
-//       console.log("Error:", err);
-//     }
-//     else {
-//       res.render("../views/employees/show", {employee: employee});
-//     }
-//   });
-// };
-
-/**
- * POST /formulation
- * Create a formulation.
- */
-
-exports.createFormulation = (req, res) => {
-  console.log('POST received');
-  console.log(req.body);
-
-  const formulation = new Formulation({
-    formulationName: req.body.formulationName,
-    dataSourceFile: req.body.dataSourceFile,
-    dataSourceFileType: req.body.dataSourceFileType,
-    geodataSourceFile: req.body.geodataSourceFile,
-    geodataSourceFileType: req.body.geodataSourceFileType
-  });
-
-  formulation.save(req.body, (err, result) => {
-    if (err) { return console.log(err) }
-
-    console.log(`Created new formulation named ${formulationName}.`);
-    console.log('saved to database')
-    res.redirect('/formulations')
-  });
-};
-
-/**
- * UPDATE /formulation
- * Update a formulation.
- */
-
-exports.updateFormulation = (req, res) => {
-  console.log('PUT received');
-  console.log(req.body);
-
-  const formulation = new Formulation({
-    formulationName: req.body.formulationName,
-    dataSourceFile: req.body.dataSourceFile,
-    dataSourceFileType: req.body.dataSourceFileType,
-    geodataSourceFile: req.body.geodataSourceFile,
-    geodataSourceFileType: req.body.geodataSourceFileType
-  });
-
-  formulation.findOneAndUpdate(
-    // query
-    { formulationName: req.body.formulationName },
-    // update
-    {
-      $set: {
-        formulationName: req.body.formulationName,
-        dataSourceFile: req.body.dataSourceFile,
-        dataSourceFileType: req.body.dataSourceFileType,
-        geodataSourceFile: req.body.geodataSourceFile,
-        geodataSourceFileType: req.body.geodataSourceFileType
-      }
-    },
-    // options
-    {},
-    // callback
-    (err, result) => {
-      if (err) return res.send(err)
-      res.send(result)
+// List All
+formulationController.list = function(req, res) {
+  Formulation.find({}).exec(function (err, formulations) {
+    if (err) {
+      console.log("Error:", err);
     }
-  );
-
-  res.redirect('/formulations')
+    else {
+      res.render("formulations/index", {formulations: formulations});
+    }
+  });
 };
 
-/**
- * DELETE /formulation
- * Delete a formulation.
- */
-
-exports.deleteFormulation = (req, res) => {
-  console.log(`Deleted formulation named ${formulationName}.`);
+// Find by _id
+formulationController.show = function(req, res) {
+  Formulation.findOne({_id: req.params.id}).exec(function (err, formulation) {
+    if (err) {
+      console.log("Error:", err);
+    }
+    else {
+      res.render("formulations/show", {formulation: formulation});
+    }
+  });
 };
+
+// Create (redirect to form)
+formulationController.create = function(req, res) {
+  res.render("formulations/create");
+};
+
+// Save new Formulation
+formulationController.save = function(req, res) {
+  var formulation = new Formulation(req.body);
+
+  formulation.save(function(err) {
+    if(err) {
+      console.log(err);
+      res.render("formulations/create");
+    } else {
+      console.log("Successfully created an formulation.");
+      res.redirect("/formulations/show/"+formulation._id);
+    }
+  });
+};
+
+// Edit Formulation
+formulationController.edit = function(req, res) {
+  Formulation.findOne({_id: req.params.id}).exec(function (err, formulation) {
+    if (err) {
+      console.log("Error:", err);
+    }
+    else {
+      res.render("formulations/edit", {formulation: formulation});
+    }
+  });
+};
+
+// Update Formulation
+formulationController.update = function(req, res) {
+  Formulation.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true }, function (err, formulation) {
+    if (err) {
+      console.log(err);
+      res.render("formulations/edit", {formulation: req.body});
+    }
+    res.redirect("/formulations/show/"+formulation._id);
+  });
+};
+
+// Delete Formulation
+formulationController.delete = function(req, res) {
+  Formulation.remove({_id: req.params.id}, function(err) {
+    if(err) {
+      console.log(err);
+    }
+    else {
+      console.log("Formulation deleted!");
+      res.redirect("/formulations");
+    }
+  });
+};
+
+// Export controller.
+module.exports = formulationController;

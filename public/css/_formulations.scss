@@ -1,0 +1,32 @@
+button {
+  margin: 0 0.5rem;
+}
+select {
+  min-width: 9rem;
+}
+label {
+  margin-left: 1rem;
+}
+li {
+  margin-bottom: 1rem;
+}
+.create-item, .item-formulation > a, .item-formulation > form > button {
+  margin-left: 1rem;
+}
+.item-formulation > a, .item-formulation > form > button {
+  margin-top: -2rem;
+}
+.item-formulation {
+  // width: 20rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #CCCCCC;
+}
+.view-item {
+  // color: #0A0;
+}
+.update-item {
+  // color: #F90;
+}
+.delete-item {
+  // color: #C00;
+}

@@ -1,0 +1,60 @@
+extends ../layout
+
+block content
+  h3 Edit Formulation Configuration
+  .container
+    .row
+      .col-xs-12.col-sm-6.col-md-6.col-lg-4
+        form.form-horizontal(role='form', action='/formulations/update'+formulation._id, method='post')
+          
+          //- CRSF Synchronization Token
+          input(type='hidden', name='_csrf', value=_csrf)
+          
+          //- Formulation Name
+          fieldset.form-group
+            label(for='formulationName') Formulation Name
+            input.form-control(type='text' name='formulationName' id='formulationName' placeholder='Enter Formulation Name' value=formulation.formulationName)
+          
+          //- Select Source Data File
+          fieldset.form-group
+            label(for='dataSourceFile') Source Data File
+            input.form-control-file(type='file' name='dataSourceFile' id='dataSourceFile' aria-describedby='dataSourceFileHelp' value=formulation.dataSourceFile)
+            small.form-text.text-muted(id='dataSourceFileHelp') The data source that will be used for the current formulation.
+          
+          //- Select Source Data File Type
+          fieldset.form-group
+            label Source Data File Format
+            div.form-check
+              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_csv' value='csv' checked)
+              label.form-check-label CSV
+            div.form-check
+              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_tsv' value='tsv')
+              label.form-check-label TSV
+            div.form-check
+              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_json' value='json')
+              label.form-check-label JSON
+            div.form-check
+              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_piped' value='piped' disabled)
+              label.form-check-label Pipe-delimited (under development)
+          
+          //- Select Source GeoData File
+          fieldset.form-group
+            label(for='geodataSourceFile') Source GIS Data File
+            input.form-control-file(type='file' name='geodataSourceFile' id='geodataSourceFile' aria-describedby='geodataSourceFileHelp' value=formulation.geodataSourceFile)
+            small.form-text.text-muted(id='geodataSourceFileHelp') The GIS data source that will be used for the current formulation.
+          
+          //- Select Source Geodata File Type
+          fieldset.form-group
+            label Source Geodata File Format
+            div.form-check
+              input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_csv' value='geojson' checked)
+              label.form-check-label GeoJSON
+            div.form-check
+              input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_tsv' value='topojson')
+              label.form-check-label TopoJSON
+            div.form-check
+              input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_piped' value='shapefile' disabled)
+              label.form-check-label ESRI Shapefile (under development)
+            
+          //- POST Form Data
+          button(type='submit' value='save') Save

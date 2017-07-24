@@ -34,7 +34,7 @@ const primary = require('./routes/primary');
 const apis = require('./routes/apis');
 const oauth = require('./routes/oauth');
 const formulations = require('./routes/formulations');
-const formulation = require('./routes/formulation');
+// const formulation = require('./routes/formulation');
 const about = require('./routes/about');
 const employees = require('./routes/employees');
 /**
@@ -146,7 +146,7 @@ app.use('/', primary);
 app.use('/about', about);
 app.use('/api', apis);
 app.use('/auth', oauth);
-app.use('/formulation', formulation);
+// app.use('/formulation', formulation);
 app.use('/formulations', formulations);
 // app.get('/settings', settingsController.index);
 // app.get('/vue-test', vueTestController.index);
