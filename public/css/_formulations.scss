@@ -10,23 +10,38 @@ label {
 li {
   margin-bottom: 1rem;
 }
-.create-item, .item-formulation > a, .item-formulation > form > button {
+.create-btn, .item-formulation > a, .item-formulation > form > button {
   margin-left: 1rem;
 }
 .item-formulation > a, .item-formulation > form > button {
   margin-top: -2rem;
 }
 .item-formulation {
-  // width: 20rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #DEDEDE;
 }
-.view-item {
-  // color: #0A0;
+.item-attributes > strong {
+  margin-right: 1rem;
 }
-.update-item {
-  // color: #F90;
+.formulation-view {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #DEDEDE;
 }
-.delete-item {
-  // color: #C00;
+.btn-create {
+  margin-right: 2rem;
+}
+.view-all-btn, .edit-btn, .delete-btn {
+  margin-top: 0.5rem;
+}
+.view-all-btn{
+  margin-right: 1rem;
+}
+.edit-btn {
+  margin-right: 0.5rem;
+}
+.delete-btn {
+  // margin-top: -2rem;
+}
+.formulation-view > form {
+  display: inline;
 }

@@ -21,7 +21,7 @@
           a(href='/formulations')
             i.fa.fa-database
             | Formulations
-        li(class=(title == 'Employees') ? 'active' : undefined)
+        //- li(class=(title == 'Employees') ? 'active' : undefined)
           a(href='/employees')
             i.fa.fa-database
             | Employees
@@ -45,7 +45,7 @@
           a(href='/about')
             i.fa.fa-info-circle
             | About
-        li(class=(title == 'Contact') ? 'active' : undefined)
+        //- li(class=(title == 'Contact') ? 'active' : undefined)
           a(href='/contact')
             i.fa.fa-envelope
             | Contact
@@ -57,7 +57,7 @@
           a(href='https://github.com/jgentle/mcsdsf-isgeo-2017/issues' target='_blank')
             i.fa.fa-bug
             | Issues
-        if !user
+        //- if !user
           li(class=(title == 'Login') ? 'active' : undefined)
             a(href='/login')
               i.fa.fa-sign-in
@@ -66,7 +66,7 @@
             a(href='/signup')
               i.fa.fa-plus
               | Create Account
-        else
+        //- else
           li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               if user.profile.picture

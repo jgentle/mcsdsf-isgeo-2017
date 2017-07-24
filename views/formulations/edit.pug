@@ -5,7 +5,7 @@ block content
   .container
     .row
       .col-xs-12.col-sm-6.col-md-6.col-lg-4
-        form.form-horizontal(role='form', action='/formulations/update'+formulation._id, method='post')
+        form.form-horizontal(role='form', action='/formulations/update/'+formulation._id, method='post')
           
           //- CRSF Synchronization Token
           input(type='hidden', name='_csrf', value=_csrf)
@@ -18,7 +18,7 @@ block content
           //- Select Source Data File
           fieldset.form-group
             label(for='dataSourceFile') Source Data File
-            input.form-control-file(type='file' name='dataSourceFile' id='dataSourceFile' aria-describedby='dataSourceFileHelp' value=formulation.dataSourceFile)
+            input.form-control-file.btn.btn-sm.btn-primary(type='file' name='dataSourceFile' id='dataSourceFile' aria-describedby='dataSourceFileHelp' value=formulation.dataSourceFile)
             small.form-text.text-muted(id='dataSourceFileHelp') The data source that will be used for the current formulation.
           
           //- Select Source Data File Type
@@ -40,7 +40,7 @@ block content
           //- Select Source GeoData File
           fieldset.form-group
             label(for='geodataSourceFile') Source GIS Data File
-            input.form-control-file(type='file' name='geodataSourceFile' id='geodataSourceFile' aria-describedby='geodataSourceFileHelp' value=formulation.geodataSourceFile)
+            input.form-control-file.btn.btn-sm.btn-success(type='file' name='geodataSourceFile' id='geodataSourceFile' aria-describedby='geodataSourceFileHelp' value=formulation.geodataSourceFile)
             small.form-text.text-muted(id='geodataSourceFileHelp') The GIS data source that will be used for the current formulation.
           
           //- Select Source Geodata File Type
@@ -57,4 +57,5 @@ block content
               label.form-check-label ESRI Shapefile (under development)
             
           //- POST Form Data
-          button(type='submit' value='save') Save
+          button.btn-create.btn.btn-sm.btn-warning(type='submit') Update
+          a.btn.btn-sm.btn-danger(href='/formulations') Cancel

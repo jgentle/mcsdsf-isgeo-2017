@@ -9,7 +9,10 @@ formulationController.list = function(req, res) {
       console.log("Error:", err);
     }
     else {
-      res.render("formulations/index", {formulations: formulations});
+      res.render("formulations/index", {
+        title: 'Formulations',
+        formulations: formulations
+      });
     }
   });
 };
@@ -21,14 +24,19 @@ formulationController.show = function(req, res) {
       console.log("Error:", err);
     }
     else {
-      res.render("formulations/show", {formulation: formulation});
+      res.render("formulations/show", {
+        title: 'Formulation Details',
+        formulation: formulation
+      });
     }
   });
 };
 
 // Create (redirect to form)
 formulationController.create = function(req, res) {
-  res.render("formulations/create");
+  res.render("formulations/create", {
+    title: 'Create Formulation'
+  });
 };
 
 // Save new Formulation
@@ -53,7 +61,10 @@ formulationController.edit = function(req, res) {
       console.log("Error:", err);
     }
     else {
-      res.render("formulations/edit", {formulation: formulation});
+      res.render("formulations/edit", {
+        title: 'Edit Formulation',
+        formulation: formulation
+      });
     }
   });
 };
@@ -63,7 +74,10 @@ formulationController.update = function(req, res) {
   Formulation.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true }, function (err, formulation) {
     if (err) {
       console.log(err);
-      res.render("formulations/edit", {formulation: req.body});
+      res.render("formulations/edit", {
+        title: 'Update Formulation',
+        formulation: req.body
+      });
     }
     res.redirect("/formulations/show/"+formulation._id);
   });
