@@ -7,44 +7,44 @@
         span.icon-bar
         span.icon-bar
       a.navbar-brand(href='/')
-        i.fa.fa-globe
-        | MCSDSF
+        i.fa.fa-tint
+        | Watermark
     .collapse.navbar-collapse
       //- ul.nav.navbar-nav
         //- EMPTY
       ul.nav.navbar-nav.navbar-right
         li(class=(title == 'Dashboard') ? 'active' : undefined)
           a(href='/')
-            i.fa.fa-home
+            i.fa.fa-globe
             | Dashboard
         li(class=(title == 'Formulations') ? 'active' : undefined)
           a(href='/formulations')
-            i.fa.fa-database
+            i.fa.fa-flask
             | Formulations
-        //- li(class=(title == 'Employees') ? 'active' : undefined)
-          a(href='/employees')
+        li(class=(title == 'Data') ? 'active' : undefined)
+          a(href='/data')
             i.fa.fa-database
-            | Employees
-        //- li
-          a(href='/status')
-            i.fa.fa-heartbeat
-            | Status
-        //- li
-          a(href='/settings')
-            i.fa.fa-cog
-            | Settings
-        //- li
-          a(href='/vue-test')
-            i.fa.fa-try
-            | Vue-Test
-        //- li(class=(title == 'API Examples') ? 'active' : undefined)
-          a(href='/api')
-            i.fa.fa-external-link
-            | API Examples
+            | Data
         li(class=(title == 'About') ? 'active' : undefined)
           a(href='/about')
             i.fa.fa-info-circle
             | About
+        li
+          a(href='/status')
+            i.fa.fa-heartbeat
+            | Status
+        //- li
+          a(href='/vue-test')
+            i.fa.fa-try
+            | Vue-Test
+        //- li(class=(title == 'Employees') ? 'active' : undefined)
+          a(href='/employees')
+            i.fa.fa-database
+            | Employees
+        li(class=(title == 'API Examples') ? 'active' : undefined)
+          a(href='/api')
+            i.fa.fa-external-link
+            | API Examples
         //- li(class=(title == 'Contact') ? 'active' : undefined)
           a(href='/contact')
             i.fa.fa-envelope
