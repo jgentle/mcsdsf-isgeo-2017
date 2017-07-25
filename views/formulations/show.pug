@@ -1,24 +1,24 @@
 extends ../layout
 
 block content
-    h3 Formulation: #{formulation.formulationName}
+    h3 Formulation: #{formulation.name}
     .container
       .row
         .col-xs-12
           div.formulation-view
             div.item-attributes
               strong Name:
-              | #{formulation.formulationName}
+              | #{formulation.name}
             div.item-attributes
               strong  Data Source File:
               | #{formulation.dataSourceFile}
-            div.item-attributes
+            //- div.item-attributes
               strong  Data Source File Type:
               | #{formulation.dataSourceFileType}
             div.item-attributes
               strong  Geodata Source File:
               | #{formulation.geodataSourceFile}
-            div.item-attributes
+            //- div.item-attributes
               strong  Geodata Source File Type:
               | #{formulation.geodataSourceFileType}
             a.view-all-btn.btn.btn-xs.btn-success(href='/formulations') View All

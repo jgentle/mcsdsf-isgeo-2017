@@ -10,7 +10,7 @@ block content
           ul
             for formulation in formulations
               li
-                div.item-formulation #{formulation.formulationName}
+                div.item-formulation #{formulation.name}
                   form(action='/formulations/delete/'+formulation._id method='post')
                     //- CRSF Synchronization Token
                     input(type='hidden', name='_csrf', value=_csrf)

@@ -13,7 +13,7 @@ block content
 					//- Formulation Name
 					fieldset.form-group
 						label(for='formulationName') Formulation Name
-						input.form-control(type='text' name='formulationName' id='formulationName' placeholder='Enter Formulation Name')
+						input.form-control(type='text' name='name' id='formulationName' placeholder='Enter Formulation Name')
 
 					//- REFACTOR
 					//- This will need to populate dropdowns based on datasources now.
@@ -27,7 +27,7 @@ block content
 						small.form-text.text-muted(id='dataSourceFileHelp') The data source that will be used for the current formulation.
 
 					//- Select Source Data File Type
-					fieldset.form-group
+					//- fieldset.form-group
 						label Source Data File Format
 						div.form-check
 							input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_csv' value='csv')
@@ -49,7 +49,7 @@ block content
 						small.form-text.text-muted(id='geodataSourceFileHelp') The GIS data source that will be used for the current formulation.
 
 					//- Select Source Geodata File Type
-					fieldset.form-group
+					//- fieldset.form-group
 						label Source Geodata File Format
 						div.form-check
 							input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_csv' value='geojson')

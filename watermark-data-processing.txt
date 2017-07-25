@@ -196,6 +196,10 @@ https://www.rithmschool.com/courses/intermediate-node-express/express-cookies-se
 Key Generator:
 https://randomkeygen.com/
 
+ER|DS|DF Diagrams (UML):
+https://www.lucidchart.com/pages/er-diagrams
+https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning
+
 MongoDB:
 https://github.com/jdesboeufs/connect-mongo
 
