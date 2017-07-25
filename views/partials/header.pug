@@ -1,84 +1,84 @@
 .navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand(href='/')
-        i.fa.fa-tint
-        | Watermark
-    .collapse.navbar-collapse
-      //- ul.nav.navbar-nav
-        //- EMPTY
-      ul.nav.navbar-nav.navbar-right
-        li(class=(title == 'Dashboard') ? 'active' : undefined)
-          a(href='/')
-            i.fa.fa-globe
-            | Dashboard
-        li(class=(title == 'Formulations') ? 'active' : undefined)
-          a(href='/formulations')
-            i.fa.fa-flask
-            | Formulations
-        li(class=(title == 'Data') ? 'active' : undefined)
-          a(href='/datasources')
-            i.fa.fa-database
-            | Data
-        li(class=(title == 'About') ? 'active' : undefined)
-          a(href='/about')
-            i.fa.fa-info-circle
-            | About
-        li
-          a(href='/status' target='_blank')
-            i.fa.fa-heartbeat
-            | Status
-        li
-          a(href='https://github.com/jgentle/mcsdsf-isgeo-2017' target='_blank')
-            i.fa.fa-code
-            | GitHub
-        li
-          a(href='https://github.com/jgentle/mcsdsf-isgeo-2017/issues' target='_blank')
-            i.fa.fa-bug
-            | Issues
-        //- if !user
-          li(class=(title == 'Login') ? 'active' : undefined)
-            a(href='/login')
-              i.fa.fa-sign-in
-              | Login
-          li(class=(title == 'Create Account') ? 'active' : undefined)
-            a(href='/signup')
-              i.fa.fa-plus
-              | Create Account
-        //- else
-          li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              if user.profile.picture
-                img(src=user.profile.picture)
-              else
-                img(src=user.gravatar(60))
-              span= user.profile.name || user.email || user.id
-              i.caret
-            ul.dropdown-menu
-              li
-                a(href='/account') My Account
-              li.divider
-              li
-                a(href='/logout') Logout
-        //- Experiments
-        //- li
-          a(href='/vue-test')
-            i.fa.fa-try
-            | Vue-Test
-        //- li(class=(title == 'Employees') ? 'active' : undefined)
-          a(href='/employees')
-            i.fa.fa-database
-            | Employees
-        //- li(class=(title == 'API Examples') ? 'active' : undefined)
-          a(href='/api')
-            i.fa.fa-external-link
-            | API Examples
-        //- li(class=(title == 'Contact') ? 'active' : undefined)
-          a(href='/contact')
-            i.fa.fa-envelope
-            | Contact
+	//- .container
+	.navbar-header
+		button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+			span.sr-only Toggle navigation
+			span.icon-bar
+			span.icon-bar
+			span.icon-bar
+		a.navbar-brand(href='/')
+			i.fa.fa-tint
+			| Watermark
+	.collapse.navbar-collapse
+		//- ul.nav.navbar-nav
+		//- EMPTY
+		ul.nav.navbar-nav.navbar-right
+			li(class=(title == 'Dashboard') ? 'active' : undefined)
+				a(href='/')
+					i.fa.fa-globe
+					| Dashboard
+			li(class=(title == 'Formulations') ? 'active' : undefined)
+				a(href='/formulations')
+					i.fa.fa-flask
+					| Formulations
+			li(class=(title == 'Data') ? 'active' : undefined)
+				a(href='/datasources')
+					i.fa.fa-database
+					| Data
+			li(class=(title == 'About') ? 'active' : undefined)
+				a(href='/about')
+					i.fa.fa-info-circle
+					| About
+			li
+				a(href='/status' target='_blank')
+					i.fa.fa-heartbeat
+					| Status
+			li
+				a(href='https://github.com/jgentle/mcsdsf-isgeo-2017' target='_blank')
+					i.fa.fa-code
+					| GitHub
+			li
+				a(href='https://github.com/jgentle/mcsdsf-isgeo-2017/issues' target='_blank')
+					i.fa.fa-bug
+					| Issues
+			if !user
+				li(class=(title == 'Login') ? 'active' : undefined)
+					a(href='/login')
+						i.fa.fa-sign-in
+						| Login
+				li(class=(title == 'Create Account') ? 'active' : undefined)
+					a(href='/signup')
+						i.fa.fa-plus
+						| Create Account
+			else
+				li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
+					a.dropdown-toggle(href='#', data-toggle='dropdown')
+						if user.profile.picture
+							img.nav-profile(src=user.profile.picture)
+						else
+							img.nav-profile(src=user.gravatar(60))
+						span= user.displayName || user.email || user.id
+						i.caret
+					ul.dropdown-menu
+						li
+							a(href='/account') My Account
+						li.divider
+						li
+							a(href='/logout') Logout
+			//- Experiments
+			//- li
+				a(href='/vue-test')
+					i.fa.fa-try
+					| Vue-Test
+			//- li(class=(title == 'Employees') ? 'active' : undefined)
+				a(href='/employees')
+					i.fa.fa-database
+					| Employees
+			//- li(class=(title == 'API Examples') ? 'active' : undefined)
+				a(href='/api')
+					i.fa.fa-external-link
+					| API Examples
+			//- li(class=(title == 'Contact') ? 'active' : undefined)
+				a(href='/contact')
+					i.fa.fa-envelope
+					| Contact

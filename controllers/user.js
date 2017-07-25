@@ -74,6 +74,7 @@ exports.getSignup = (req, res) => {
  * Create a new local account.
  */
 exports.postSignup = (req, res, next) => {
+  console.log(req.body);
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('password', 'Password must be at least 4 characters long').len(4);
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
@@ -88,7 +89,8 @@ exports.postSignup = (req, res, next) => {
 
   const user = new User({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    displayName: req.body.displayName
   });
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
@@ -137,7 +139,10 @@ exports.postUpdateProfile = (req, res, next) => {
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
     user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
+    user.displayName = req.body.displayName || '';
+    user.profile.firstName = req.body.firstName || '';
+    user.profile.lastName = req.body.lastName || '';
+    user.profile.organization = req.body.organization || '';
     user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
@@ -281,8 +286,8 @@ exports.postReset = (req, res, next) => {
     });
     const mailOptions = {
       to: user.email,
-      from: 'hackathon@starter.com',
-      subject: 'Your Hackathon Starter password has been changed',
+      from: 'watermark@tacc.utexas.com',
+      subject: 'Your Watermark password has been changed',
       text: `Hello,\n\nThis is a confirmation that the password for your account ${user.email} has just been changed.\n`
     };
     return transporter.sendMail(mailOptions)
@@ -356,7 +361,7 @@ exports.postForgot = (req, res, next) => {
     const mailOptions = {
       to: user.email,
       from: 'jgentle@tacc.utexas.edu',
-      subject: 'Reset your password on MCSDSF IS-GEO 2017',
+      subject: 'Reset your password on Watermark',
       text: `You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n
         Please click on the following link, or paste this into your browser to complete the process:\n\n
         http://${req.headers.host}/reset/${token}\n\n

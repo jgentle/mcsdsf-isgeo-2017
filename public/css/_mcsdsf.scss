@@ -13,6 +13,19 @@ label {
 li {
   margin-bottom: 1rem;
 }
+.navbar {
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-right: 3rem;
+  padding-bottom: 0;
+  padding-left: 2rem;
+  // background: #EEEEEE;
+  background: #DDEEFF;
+  border-bottom: 1px solid #777777;
+}
+.nav-profile {
+  border: 1px solid #333333;
+}
 .header-logo {
   display: inline;
   max-height: 3rem;

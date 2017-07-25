@@ -7,7 +7,16 @@ const userSchema = new mongoose.Schema({
   password: String,
   passwordResetToken: String,
   passwordResetExpires: Date,
-
+  displayName: String,
+  profile: {
+    firstName: String,
+    lastName: String,
+    organization: String,
+    gender: String,
+    location: String,
+    website: String,
+    picture: String
+  },
   facebook: String,
   twitter: String,
   google: String,
@@ -16,14 +25,8 @@ const userSchema = new mongoose.Schema({
   linkedin: String,
   steam: String,
   tokens: Array,
-
-  profile: {
-    name: String,
-    gender: String,
-    location: String,
-    website: String,
-    picture: String
-  }
+  roles: Array,
+  formulations: Array
 }, { timestamps: true });
 
 /**
