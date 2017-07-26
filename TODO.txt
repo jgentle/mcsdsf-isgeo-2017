@@ -1,0 +1,36 @@
+Do Outs on Watermark
+
+NOW:
+- Define schema for JsonData model (if necessary).
+- Define schema for Configuration data model.
+- Define schema for Insight data model (may delay this until Dashboard is fully functional).
+- Refactor controllers to use new data models.
+- Create CRUD capabilities for all data models.
+- Load, parse and validate source data (CSV, GeoJSON then TSV, JSON and TopoJSON).
+- Store validated sourcedata in jsondata collection.
+- Display subdocuments in CRUD views (create, edit, show, etc.) as appropriate.
+- Retrieve complete Formulation from db and use to configure and populate dashboard.
+  -- Decouple Leaflet from hard coded input values.
+  -- Decouple Crossfilter from hard coded input values.
+  -- Decouple DC.js from hard coded input values.
+    --- Consider using pure D3 instead of DC.js if required.
+  -- Create sub/pub listeners to update views based on user interactions with filters.
+- Add UI to load Formulation into dashboard.
+
+THEN:
+- Add UI to save current formulation configuration and settings as an Insight.
+- Add UI to load an Insight into dashboard.
+  -- Insights are currently children (subdocuments) of a formulation.
+  -- May need to refactor Insight model to act as an all-in-one file to populate the dashboard.
+    --- Would help with generating embed objects and publishing findings.
+
+MAYBE:
+- Packaged up as an Electron application
+- Dockerize for simple deployment.
+
+HOUSE KEEPING:
+- Update README
+- Add setup/installation instructions
+- Add usage instructions
+  -- Create a tutorial view
+  -- Create an FAQ view
