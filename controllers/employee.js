@@ -1,17 +1,6 @@
-// const bluebird = require('bluebird');
-// const crypto = bluebird.promisifyAll(require('crypto'));
-// const passport = require('passport');
 const Employee = require('../models/Employee.js');
 
 const employeeController = {};
-
-// Formulation.find((err, formulations) => {
-//   res.render('formulations', {
-//     title: 'Formulations',
-//     formulations: formulations
-//   });
-//   console.log(`All formulations.`);
-// });
 
 // List All
 employeeController.list = function(req, res) {
@@ -20,7 +9,6 @@ employeeController.list = function(req, res) {
       console.log("Error:", err);
     }
     else {
-      // res.render("../views/employees/index", {employees: employees});
       res.render("employees/index", {employees: employees});
     }
   });

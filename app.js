@@ -38,7 +38,7 @@ const oauth = require('./routes/oauth');
 const formulations = require('./routes/formulations');
 const datasources = require('./routes/datasources');
 const about = require('./routes/about');
-// const employees = require('./routes/employees');
+
 /**
  * API keys and Passport configuration.
  */
@@ -151,7 +151,6 @@ app.use('/auth', oauth);
 app.use('/formulations', formulations);
 app.use('/datasources', datasources);
 // app.get('/vue-test', vueTestController.index);
-// app.use('/employees', employees);
 
 /**
  * Error Handler.

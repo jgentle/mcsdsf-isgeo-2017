@@ -6,7 +6,7 @@ const dataSourceSchema = new mongoose.Schema({
   description: String,
   isGeospatial: Boolean,
   dataFormat: String,
-  sourceData: { type: Schema.Types.ObjectId, ref: 'SourceData' },   // _id for document in configuration collection.
+  sourceData: { type: Schema.Types.ObjectId, ref: 'JsonData' },   // _id for document in sourcedata collection.
 }, { timestamps: true });
 
 const DataSource = mongoose.model('DataSource', dataSourceSchema);
