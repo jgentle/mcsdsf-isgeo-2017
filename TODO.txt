@@ -34,3 +34,5 @@ HOUSE KEEPING:
 - Add usage instructions
   -- Create a tutorial view
   -- Create an FAQ view
+- Update Navbar "active" status based on sub-routes for all views.
+  -- Currently just responds to top-level routes.
