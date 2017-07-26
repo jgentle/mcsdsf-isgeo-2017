@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
@@ -24,9 +25,9 @@ const userSchema = new mongoose.Schema({
   instagram: String,
   linkedin: String,
   steam: String,
-  tokens: Array,
-  roles: Array,
-  formulations: Array
+  tokens: [],
+  roles: [],
+  formulations: [{ type: Schema.Types.ObjectId, ref: 'Formulation' }]   // Array of subdocument _ids for documents in the formulations collection.
 }, { timestamps: true });
 
 /**
