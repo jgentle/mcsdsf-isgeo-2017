@@ -14,7 +14,7 @@
 		ul.nav.navbar-nav.navbar-right
 			if user
 				li(class=(title == 'Dashboard') ? 'active' : undefined)
-					a(href='/')
+					a(href='/dashboard')
 						i.fa.fa-globe
 						| Dashboard
 				li(class=(title == 'Formulations') ? 'active' : undefined)
@@ -34,24 +34,24 @@
 				ul.dropdown-menu
 					li.divider
 					li(class=(title == 'Tutorial') ? 'active' : undefined)
-						a(href='/tutorial')
+						a(href='/information/tutorial')
 							i.fa.fa-road
 							| Tutorial
 					li.divider
 					li(class=(title == 'FAQ') ? 'active' : undefined)
-						a(href='/faq')
+						a(href='/information/faq')
 							i.fa.fa-question-circle
 							| FAQ
 					li.divider
 					li(class=(title == 'About') ? 'active' : undefined)
-						a(href='/about')
+						a(href='/information/about')
 							i.fa.fa-puzzle-piece
 							| About
 					li.divider
 					li
 						a(href='/status' target='_blank')
 							i.fa.fa-heartbeat
-							| Status
+							| System Status
 					li.divider
 					li
 						a(href='https://github.com/jgentle/mcsdsf-isgeo-2017' target='_blank')

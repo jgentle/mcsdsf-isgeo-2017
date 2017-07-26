@@ -1,6 +1,10 @@
+// Import Models.
 const Employee = require('../models/Employee.js');
 
+// Create Controller Object.
 const employeeController = {};
+
+// Define Controller Methods.
 
 // List All
 employeeController.list = function(req, res) {

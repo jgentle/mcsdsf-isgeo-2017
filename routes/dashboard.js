@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const aboutController = require('../controllers/about');
+const dashboardController = require('../controllers/dashboard');
 
 // middleware
 // router.use(function timeLog (req, res, next) {
@@ -9,6 +9,7 @@ const aboutController = require('../controllers/about');
 // })
 
 // define routes
-router.get('/', aboutController.index);
+router.get('/', dashboardController.dashboard);
+router.get('/populate', dashboardController.populate);
 
 module.exports = router;

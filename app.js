@@ -33,11 +33,12 @@ dotenv.load({ path: '.env.example' });
  * Routers
  */
 const primary = require('./routes/primary');
-const apis = require('./routes/apis');
 const oauth = require('./routes/oauth');
+const dashboard = require('./routes/dashboard');
 const formulations = require('./routes/formulations');
 const datasources = require('./routes/datasources');
-const about = require('./routes/about');
+const information = require('./routes/information');
+// const apis = require('./routes/apis');
 
 /**
  * API keys and Passport configuration.
@@ -145,11 +146,12 @@ app.use('/scripts', express.static(path.join(__dirname, '/node_modules')));
  * Routes
  */
 app.use('/', primary);
-app.use('/about', about);
-app.use('/api', apis);
 app.use('/auth', oauth);
+app.use('/dashboard', dashboard);
 app.use('/formulations', formulations);
 app.use('/datasources', datasources);
+app.use('/information', information);
+// app.use('/api', apis);
 // app.get('/vue-test', vueTestController.index);
 
 /**
