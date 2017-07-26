@@ -1,9 +1,10 @@
-Do Outs on Watermark
+Do Outs on Watermark Codebase
 
 NOW:
 - Define schema for JsonData model (if necessary).
 - Define schema for Configuration data model.
 - Define schema for Insight data model (may delay this until Dashboard is fully functional).
+- Update ERD Diagram to reflect current data models.
 - Refactor controllers to use new data models.
 - Create CRUD capabilities for all data models.
 - Load, parse and validate source data (CSV, GeoJSON then TSV, JSON and TopoJSON).
@@ -24,10 +25,6 @@ THEN:
   -- May need to refactor Insight model to act as an all-in-one file to populate the dashboard.
     --- Would help with generating embed objects and publishing findings.
 
-MAYBE:
-- Packaged up as an Electron application
-- Dockerize for simple deployment.
-
 HOUSE KEEPING:
 - Update README
 - Add setup/installation instructions
@@ -36,3 +33,7 @@ HOUSE KEEPING:
   -- Create an FAQ view
 - Update Navbar "active" status based on sub-routes for all views.
   -- Currently just responds to top-level routes.
+
+  MAYBE:
+  - Packaged up as an Electron application
+  - Dockerize for simple deployment.
