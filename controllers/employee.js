@@ -40,7 +40,7 @@ employeeController.save = function(req, res) {
       console.log(err);
       res.render("employees/create");
     } else {
-      console.log("Successfully created an employee.");
+      console.log("Successfully created new Employee.");
       res.redirect("/employees/show/"+employee._id);
     }
   });

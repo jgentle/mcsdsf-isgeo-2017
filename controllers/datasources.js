@@ -53,7 +53,7 @@ dataController.save = function(req, res) {
       console.log(err);
       res.render("datasources/upload");
     } else {
-      console.log("Successfully created a datasource.");
+      console.log("Successfully created new DataSource.");
       res.redirect("/datasources/show/"+datasource._id);
     }
   });

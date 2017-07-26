@@ -1,20 +1,32 @@
 Do Outs on Watermark Codebase
 
 NOW:
+
+** Data Models
 - Define schema for JsonData model (if necessary).
 - Define schema for Configuration data model.
 - Define schema for Insight data model (may delay this until Dashboard is fully functional).
 - Update ERD Diagram to reflect current data models.
+
+** Controllers
 - Refactor controllers to use new data models.
-- Create CRUD capabilities for all data models.
+- Create CRUD controller methods for all data models.
+- Update UI to support CRUD actions for all data models.
+
+** Data Loading, Validation & Storage
 - Load, parse and validate source data (CSV, GeoJSON then TSV, JSON and TopoJSON).
 - Store validated sourcedata in jsondata collection.
+- Create data mapping for configuration.
+  -- Embed this data directly in Configuration model dataMapping object? <= Ideal
+  -- Reuse the JsonData Model as a DBRef?
 - Display subdocuments in CRUD views (create, edit, show, etc.) as appropriate.
+
+** Dashboard
 - Retrieve complete Formulation from db and use to configure and populate dashboard.
-  -- Decouple Leaflet from hard coded input values.
-  -- Decouple Crossfilter from hard coded input values.
-  -- Decouple DC.js from hard coded input values.
-    --- Consider using pure D3 instead of DC.js if required.
+  -- Decouple Leaflet from hard coded input values.       => Configuration model.
+  -- Decouple Crossfilter from hard coded input values.   => Configuration model.
+  -- Decouple DC.js from hard coded input values.         => Configuration model.
+    --- Consider using pure D3 instead of DC.js if necessary.
   -- Create sub/pub listeners to update views based on user interactions with filters.
 - Add UI to load Formulation into dashboard.
 

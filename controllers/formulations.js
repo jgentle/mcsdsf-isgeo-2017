@@ -48,7 +48,7 @@ formulationsController.save = function(req, res) {
       console.log(err);
       res.render("formulations/create");
     } else {
-      console.log("Successfully created an formulation.");
+      console.log("Successfully created new Formulation.");
       res.redirect("/formulations/show/"+formulation._id);
     }
   });
