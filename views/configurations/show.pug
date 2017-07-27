@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+	h3 Configuration: #{configuration.name}
+	.container
+		.row
+			.col-xs-12
+				div.formulation-view
+					div.item-attributes
+						strong Name:
+						| #{configuration.name}
+					div.item-attributes
+						strong  Source Data File:
+						| #{formulation.dataSource_id}
+					div.item-attributes
+						strong  Geospatial Source Data File:
+						| #{formulation.geodataSource_id}
+					div.item-attributes
+						strong  Data Mapping:
+						| #{configuration.configurationData_id}
+					a.view-all-btn.btn.btn-xs.btn-success(href='/formulations/show/+formulation._id') View Formulation
+					a.edit-btn.btn.btn-xs.btn-warning(href='/configurations/edit/' + configuration._id) Edit
+					form(action='/configurations/delete/'+configuration._id method='post')
+						//- CRSF Synchronization Token
+						input(type='hidden', name='_csrf', value=_csrf)
+						button.delete-btn.btn.btn-xs.btn-danger(type='submit') Delete
