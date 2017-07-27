@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const systemsModelSchema = new mongoose.Schema({
   name: String,
-  // dashboardState: []   // Array holds JSON data object (index 0).
-  modelData_id: { type: Schema.Types.ObjectId, ref: 'JsonData' }   // _id for document in sourcedata collection.
+  description: String,
+  modelData_id: { type: Schema.Types.ObjectId, ref: 'DataSource' },   // _id for document in datasources collection.
+  configurations: [{ type: Schema.Types.ObjectId, ref: 'SystemsModelConfiguration' }]   // Array of subdocument _ids in the systemsModelConfigurations collection.
 }, { timestamps: true });
 
 const SystemsModel = mongoose.model('SystemsModel', systemsModelSchema);

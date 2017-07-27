@@ -5,8 +5,11 @@ const dataSourceSchema = new mongoose.Schema({
   name: String,
   description: String,
   isGeospatial: Boolean,
-  dataFormat: String,
-  sourceData_id: { type: Schema.Types.ObjectId, ref: 'JsonData' }   // _id for document in sourcedata collection.
+  isFormulationConfiguration: Boolean,
+  isInsight: Boolean,
+  isSystemsModel: Boolean,
+  isSystemsModelConfiguration: Boolean,
+  sourceData_id: { type: Schema.Types.ObjectId, ref: 'JsonData' }   // _id for document in jsondata collection.
 }, { timestamps: true });
 
 const DataSource = mongoose.model('DataSource', dataSourceSchema);

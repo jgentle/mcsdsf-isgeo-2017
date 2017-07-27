@@ -27,7 +27,8 @@ const userSchema = new mongoose.Schema({
   steam: String,
   tokens: [],
   roles: [],
-  formulations: [{ type: Schema.Types.ObjectId, ref: 'Formulation' }]   // Array of subdocument _ids for documents in the formulations collection.
+  formulations: [{ type: Schema.Types.ObjectId, ref: 'Formulation' }],   // Array of subdocument _ids in the formulations collection.
+  systemsModels: [{ type: Schema.Types.ObjectId, ref: 'SystemsModel' }]   // Array of subdocument _ids in the systemsModels collection.
 }, { timestamps: true });
 
 /**
