@@ -21,7 +21,7 @@
 					a(href='/formulations')
 						i.fa.fa-flask
 						| Formulations
-				li(class=(title == 'Formulation Configurations') ? 'active' : undefined)
+				//- li(class=(title == 'Formulation Configurations') ? 'active' : undefined)
 					a(href='/formulation-configurations')
 						i.fa.fa-flask
 						| FC
@@ -29,7 +29,7 @@
 					a(href='/systems-models')
 						i.fa.fa-cubes
 						| Systems Models
-				li(class=(title == 'Systems Model Configurations') ? 'active' : undefined)
+				//- li(class=(title == 'Systems Model Configurations') ? 'active' : undefined)
 					a(href='/systems-model-configurations')
 						i.fa.fa-cubes
 						| SMC
@@ -88,9 +88,9 @@
 				li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
 					a.dropdown-toggle(href='#', data-toggle='dropdown')
 						if user.profile.picture
-							img.nav-profile(src=user.profile.picture)
+							img.nav-profile.visible-xs-inline-block.visible-lg-inline-block(src=user.profile.picture)
 						else
-							img.nav-profile(src=user.gravatar(60))
+							img.nav-profile.visible-xs-inline-block.visible-lg-inline-block(src=user.gravatar(60))
 						span= user.displayName || user.email || user.id
 						i.caret
 					ul.dropdown-menu
