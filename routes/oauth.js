@@ -11,6 +11,18 @@ const passportConfig = require('../config/passport');
 
 // define routes
 router.get('/', function(req, res) { res.redirect('/'); });
+
+router.get('/twitter', passport.authenticate('twitter'));
+router.get('/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect(req.session.returnTo || '/');
+});
+
+router.get('/google', passport.authenticate('google', { scope: 'profile email' }));
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+  // res.redirect(req.session.returnTo || '/');
+  res.redirect(req.session.returnTo || 'postmessage');
+});
+
 router.get('/instagram', passport.authenticate('instagram'));
 router.get('/instagram/callback', passport.authenticate('instagram', { failureRedirect: '/login' }), (req, res) => {
   res.redirect(req.session.returnTo || '/');
@@ -23,14 +35,8 @@ router.get('/github', passport.authenticate('github'));
 router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), (req, res) => {
   res.redirect(req.session.returnTo || '/');
 });
-router.get('/google', passport.authenticate('google', { scope: 'profile email' }));
-router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/');
-});
-router.get('/twitter', passport.authenticate('twitter'));
-router.get('/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/');
-});
+
+
 router.get('/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE' }));
 router.get('/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), (req, res) => {
   res.redirect(req.session.returnTo || '/');
