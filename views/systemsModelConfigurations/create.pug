@@ -7,14 +7,25 @@ block content
 				form.form-horizontal(role='form', action='/systems-model-configurations/save', method='post')
 					//- CRSF Synchronization Token
 					input(type='hidden', name='_csrf', value=_csrf)
-					//- Configuration Name
+					//- Name
 					fieldset.form-group
 						label(for='configurationName') Configuration Name
 						input.form-control(type='text' name='name' id='configurationName' placeholder='Enter Configuration Name')
-          //- Configuration Description
+					//- Description
 					fieldset.form-group
 						label(for='configurationDescription') Configuration Description
 						textarea.form-control(type='text' name='description' id='configurationDescription' placeholder='Enter Configuration Description')
+					//- Configuration File
+					//- fieldset.form-group
+						label(for='systemsmodelConfiguration') Select Systems Model Configuration
+						if (systemsmodelconfigurations[0] == null)
+							p No configurations found.
+						else
+							select.form-control(type='dropdown' name='configuration_id' id='systemsmodelConfiguration')
+								each fc in systemsmodelconfigurations
+									option(value= fc.value, selected=blob.kind === fc.value ? true : false)=fc.text
+						p Create a new Configuration
+							a.btn.btn-sm.btn-primary.create-btn(href='/formulaton-configurations/create') Create
 					//- POST Form Data
 					button.btn-create.btn.btn-sm.btn-primary(type='submit' value='Save') Create
 					a.btn.btn-sm.btn-danger(href='/systems-model-configurations') Cancel

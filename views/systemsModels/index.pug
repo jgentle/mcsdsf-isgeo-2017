@@ -1,24 +1,28 @@
 extends ../layout
-
 block content
-	h3 Systems Models Index
+	h3 Systems Model Index
 	.container
 		.row
-			h4 Current Systems Models
-			if (systemsModels != null)
-				.col-sm-12.col-sm-10.col-md-8.col-lg-6
+			h4 Current Systems Model
+			.col-xs-12
+				if (systemsmodels[0] == null)
+					div
+						p No systems model configurations were found.
+				else
 					ul
-						for systemsModel in systemsModels
+						for systemsmodel in systemsmodels
 							li
-								div.item-systems-model #{systemsModel.name}
-									form(action='/systems-models/delete/'+systemsModel._id method='post')
+								div.item-systems-model-configuration #[strong Name:] #{systemsmodel.name}
+									form(action='/systems-models/delete/'+systemsmodel._id method='post')
 										//- CRSF Synchronization Token
 										input(type='hidden', name='_csrf', value=_csrf)
 										button.btn.btn-xs.btn-danger.pull-right(type='submit') Delete
-									a.btn.btn-xs.btn-warning.pull-right(href='/systems-models/edit/' + systemsModel._id) Edit
-									a.btn.btn-xs.btn-success.pull-right(href='/systems-models/show/' + systemsModel._id) View
-			else
-				div No systemsModels found.
+									a.btn.btn-xs.btn-warning.pull-right(href='/systems-models/edit/' + systemsmodel._id) Edit
+									a.btn.btn-xs.btn-success.pull-right(href='/systems-models/show/' + systemsmodel._id) View
+								if (systemsmodel.description != null)
+									div.item-systems-model-description #[strong Description:] #{systemsmodel.description}
+								else
+									div.item-systems-model-description No description available.
 		.row
 			p Create a new Systems Model
 				a.btn.btn-sm.btn-primary.create-btn(href='/systems-models/create') Create

@@ -1,20 +1,21 @@
 extends ../layout
-
 block content
 	h3 New Systems Model
 	.container
 		.row
-			.col-xs-12.col-sm-6.col-md-6.col-lg-4
+			.col-xs-12
 				form.form-horizontal(role='form', action='/systems-models/save', method='post')
-
 					//- CRSF Synchronization Token
 					input(type='hidden', name='_csrf', value=_csrf)
-
-					//- Formulation Name
+					//- Name
 					fieldset.form-group
-						label(for='systemsModelName') Systems Model Name
-						input.form-control(type='text' name='name' id='systemsModelName' placeholder='Enter Systems Model Name')
-
+						label(for='modelName') Model Name
+						input.form-control(type='text' name='name' id='modelName' placeholder='Enter Model Name')
+					//- Description
+					fieldset.form-group
+						label(for='modelDescription') Model Description
+						textarea.form-control(type='text' name='description' id='modelDescription' placeholder='Enter Model Description')
+					//- Configuration File
 					//- POST Form Data
 					button.btn-create.btn.btn-sm.btn-primary(type='submit' value='Save') Create
 					a.btn.btn-sm.btn-danger(href='/systems-models') Cancel

@@ -1,17 +1,18 @@
 extends ../layout
-
 block content
-	h3 Systems Model: #{systemsModel.name}
+	h3 Systems Model: #{systemsmodel.name}
 	.container
 		.row
 			.col-xs-12
-				div.systems-model-view
-					div.item-attributes
-						strong Name:
-						| #{systemsModel.name}
+				div.systems-model-configuration-view
+					div.item-attributes #[strong Name:] #{systemsmodel.name}
+					div.item-attributes #[strong Description:] #{systemsmodel.description}
+					div.item-attributes #[strong Systems Model Configuration:] #{systemsmodel.configuration}
+					div.item-attributes #[strong Systems Model Created On:] #{systemsmodel.createdAt}
+					div.item-attributes #[strong Systems Model Updated On:] #{systemsmodel.updatedAt}
 					a.view-all-btn.btn.btn-xs.btn-success(href='/systems-models') View All
-					a.edit-btn.btn.btn-xs.btn-warning(href='/systems-models/edit/' + systemsModel._id) Edit
-					form(action='/systems-models/delete/'+systemsModel._id method='post')
+					a.edit-btn.btn.btn-xs.btn-warning(href='/systems-models/edit/' + systemsmodel._id) Edit
+					form(action='/systems-models/delete/'+systemsmodel._id method='post')
 						//- CRSF Synchronization Token
 						input(type='hidden', name='_csrf', value=_csrf)
 						button.delete-btn.btn.btn-xs.btn-danger(type='submit') Delete

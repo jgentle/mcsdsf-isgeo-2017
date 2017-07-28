@@ -4,14 +4,14 @@ const systemsModelsController = {};
 
 // List All
 systemsModelsController.list = function(req, res) {
-  SystemsModel.find({}).exec(function (err, systemsModels) {
+  SystemsModel.find({}).exec(function (err, systemsmodels) {
     if (err) {
       console.log("Error:", err);
     }
     else {
       res.render("systemsModels/index", {
         title: 'Systems Model',
-        systemsModels: systemsModels
+        systemsmodels: systemsmodels
       });
     }
   });
@@ -19,14 +19,14 @@ systemsModelsController.list = function(req, res) {
 
 // Find by _id
 systemsModelsController.show = function(req, res) {
-  SystemsModel.findOne({_id: req.params.id}).exec(function (err, systemsModel) {
+  SystemsModel.findOne({_id: req.params.id}).exec(function (err, systemsmodel) {
     if (err) {
       console.log("Error:", err);
     }
     else {
       res.render("systemsModels/show", {
         title: 'SystemsModel Details',
-        systemsModel: systemsModel
+        systemsmodel: systemsmodel
       });
     }
   });
@@ -56,14 +56,14 @@ systemsModelsController.save = function(req, res) {
 
 // Edit SystemsModel
 systemsModelsController.edit = function(req, res) {
-  SystemsModel.findOne({_id: req.params.id}).exec(function (err, systemsModel) {
+  SystemsModel.findOne({_id: req.params.id}).exec(function (err, systemsmodel) {
     if (err) {
       console.log("Error:", err);
     }
     else {
       res.render("systemsModels/edit", {
         title: 'Edit SystemsModel',
-        systemsModel: systemsModel
+        systemsmodel: systemsmodel
       });
     }
   });
@@ -71,7 +71,7 @@ systemsModelsController.edit = function(req, res) {
 
 // Update SystemsModel
 systemsModelsController.update = function(req, res) {
-  SystemsModel.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true }, function (err, systemsModel) {
+  SystemsModel.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, description: req.body.description }}, { new: true }, function (err, systemsModel) {
     if (err) {
       console.log(err);
       res.render("systemsModels/edit", {

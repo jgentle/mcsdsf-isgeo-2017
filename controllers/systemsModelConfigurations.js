@@ -49,7 +49,7 @@ systemsModelConfigurationsController.save = function(req, res) {
       res.render("systemsModelConfigurations/create");
     } else {
       console.log("Successfully created new SystemsModelConfiguration.");
-      res.redirect("/systems-model-configurations/show/"+systemsmodelconfiguration._id);
+      res.redirect("/systems-model-configurations/show/"+systemsModelConfiguration._id);
     }
   });
 };
@@ -71,7 +71,7 @@ systemsModelConfigurationsController.edit = function(req, res) {
 
 // Update SystemsModelConfiguration
 systemsModelConfigurationsController.update = function(req, res) {
-  SystemsModelConfiguration.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true }, function (err, systemsmodelconfiguration) {
+  SystemsModelConfiguration.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, description: req.body.description }}, { new: true }, function (err, systemsmodelconfiguration) {
     if (err) {
       console.log(err);
       res.render("systemsModelConfigurations/edit", {

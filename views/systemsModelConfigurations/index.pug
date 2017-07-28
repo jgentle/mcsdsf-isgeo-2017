@@ -1,28 +1,28 @@
 extends ../layout
-
 block content
-	h3 Formulations Index
+	h3 Systems Model Configurations Index
 	.container
 		.row
-			h4 Current Formulations
-			if (formulations != null)
-				.col-sm-12.col-sm-10.col-md-8.col-lg-6
+			h4 Current Systems Model Configurations
+			.col-xs-12
+				if (systemsmodelconfigurations[0] == null)
+					div
+						p No systems model configurations were found.
+				else
 					ul
-						for formulation in formulations
+						for systemsmodelconfiguration in systemsmodelconfigurations
 							li
-								div.item-formulation #{formulation.name}
-									form(action='/formulations/delete/'+formulation._id method='post')
+								div.item-systems-model-configuration #[strong Name:] #{systemsmodelconfiguration.name}
+									form(action='/systems-model-configurations/delete/'+systemsmodelconfiguration._id method='post')
 										//- CRSF Synchronization Token
 										input(type='hidden', name='_csrf', value=_csrf)
 										button.btn.btn-xs.btn-danger.pull-right(type='submit') Delete
-									a.btn.btn-xs.btn-warning.pull-right(href='/formulations/edit/' + formulation._id) Edit
-									a.btn.btn-xs.btn-success.pull-right(href='/formulations/show/' + formulation._id) View
-								if (formulation.description != null)
-									div.item-formulation-description #{formulation.description}
+									a.btn.btn-xs.btn-warning.pull-right(href='/systems-model-configurations/edit/' + systemsmodelconfiguration._id) Edit
+									a.btn.btn-xs.btn-success.pull-right(href='/systems-model-configurations/show/' + systemsmodelconfiguration._id) View
+								if (systemsmodelconfiguration.description != null)
+									div.item-systems-model-description #[strong Description:] #{systemsmodelconfiguration.description}
 								else
-									div.item-formulation-description No description available.
-			else
-				div No formulations found.
+									div.item-systems-model-description No description available.
 		.row
-			p Create a new Formulation
-				a.btn.btn-sm.btn-primary.create-btn(href='/formulations/create') Create
+			p Create a new Systems Model Configuration
+				a.btn.btn-sm.btn-primary.create-btn(href='/systems-model-configurations/create') Create
