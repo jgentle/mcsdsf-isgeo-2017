@@ -23,7 +23,7 @@ block content
 						else
 							select.form-control(type='dropdown' name='configuration_id' id='formulationConfiguration')
 								each fc in formulationconfigurations
-									option(value= fc.value, selected=blob.kind === fc.value ? true : false)=fc.text
+									option(value= fc.id, selected=fc.id === fc.value ? true : false)=fc.name
 						p Create a new Configuration
 							a.btn.btn-sm.btn-primary.create-btn(href='/formulaton-configurations/create') Create
 					//- POST Form Data
