@@ -16,7 +16,12 @@ label {
   margin-left: 1rem;
 }
 li {
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
+}
+li > a > i {
+  // margin-right: 0.8rem;
+  // color: #55AAFF;
+  // color: #FFAA55;
 }
 .navbar {
   margin: 0;
