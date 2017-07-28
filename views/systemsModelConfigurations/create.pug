@@ -1,0 +1,20 @@
+extends ../layout
+block content
+	h3 New Systems Model Configuration
+	.container
+		.row
+			.col-xs-12
+				form.form-horizontal(role='form', action='/systems-model-configurations/save', method='post')
+					//- CRSF Synchronization Token
+					input(type='hidden', name='_csrf', value=_csrf)
+					//- Configuration Name
+					fieldset.form-group
+						label(for='configurationName') Configuration Name
+						input.form-control(type='text' name='name' id='configurationName' placeholder='Enter Configuration Name')
+          //- Configuration Description
+					fieldset.form-group
+						label(for='configurationDescription') Configuration Description
+						textarea.form-control(type='text' name='description' id='configurationDescription' placeholder='Enter Configuration Description')
+					//- POST Form Data
+					button.btn-create.btn.btn-sm.btn-primary(type='submit' value='Save') Create
+					a.btn.btn-sm.btn-danger(href='/systems-model-configurations') Cancel

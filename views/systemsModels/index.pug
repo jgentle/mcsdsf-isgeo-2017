@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+	h3 Systems Models Index
+	.container
+		.row
+			h4 Current Systems Models
+			if (systemsModels != null)
+				.col-sm-12.col-sm-10.col-md-8.col-lg-6
+					ul
+						for systemsModel in systemsModels
+							li
+								div.item-systems-model #{systemsModel.name}
+									form(action='/systems-models/delete/'+systemsModel._id method='post')
+										//- CRSF Synchronization Token
+										input(type='hidden', name='_csrf', value=_csrf)
+										button.btn.btn-xs.btn-danger.pull-right(type='submit') Delete
+									a.btn.btn-xs.btn-warning.pull-right(href='/systems-models/edit/' + systemsModel._id) Edit
+									a.btn.btn-xs.btn-success.pull-right(href='/systems-models/show/' + systemsModel._id) View
+			else
+				div No systemsModels found.
+		.row
+			p Create a new Systems Model
+				a.btn.btn-sm.btn-primary.create-btn(href='/systems-models/create') Create

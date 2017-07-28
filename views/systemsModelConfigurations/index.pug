@@ -1,18 +1,16 @@
 extends ../layout
+
 block content
 	h3 Formulations Index
 	.container
 		.row
 			h4 Current Formulations
-			.col-xs-12
-				if (formulations[0] == null)
-					div
-						p No formulations were found.
-				else
+			if (formulations != null)
+				.col-sm-12.col-sm-10.col-md-8.col-lg-6
 					ul
 						for formulation in formulations
 							li
-								div.item-formulation #[strong Name:] #{formulation.name}
+								div.item-formulation #{formulation.name}
 									form(action='/formulations/delete/'+formulation._id method='post')
 										//- CRSF Synchronization Token
 										input(type='hidden', name='_csrf', value=_csrf)
@@ -20,9 +18,11 @@ block content
 									a.btn.btn-xs.btn-warning.pull-right(href='/formulations/edit/' + formulation._id) Edit
 									a.btn.btn-xs.btn-success.pull-right(href='/formulations/show/' + formulation._id) View
 								if (formulation.description != null)
-									div.item-formulation-description #[strong Description:] #{formulation.description}
+									div.item-formulation-description #{formulation.description}
 								else
 									div.item-formulation-description No description available.
+			else
+				div No formulations found.
 		.row
 			p Create a new Formulation
 				a.btn.btn-sm.btn-primary.create-btn(href='/formulations/create') Create

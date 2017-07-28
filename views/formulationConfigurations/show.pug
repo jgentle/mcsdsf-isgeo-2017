@@ -1,0 +1,18 @@
+extends ../layout
+block content
+	h3 Formulation Configuration: #{formulationconfiguration.name}
+	.container
+		.row
+			.col-xs-12
+				div.formulation-configuration-view
+					div.item-attributes #[strong Name:] #{formulationconfiguration.name}
+					div.item-attributes #[strong Description:] #{formulationconfiguration.description}
+					div.item-attributes #[strong Formulation Configuration:] #{formulationconfiguration.configuration}
+					div.item-attributes #[strong Formulation Created On:] #{formulationconfiguration.createdAt}
+					div.item-attributes #[strong Formulation Updated On:] #{formulationconfiguration.updatedAt}
+					a.view-all-btn.btn.btn-xs.btn-success(href='/formulation-configurations') View All
+					a.edit-btn.btn.btn-xs.btn-warning(href='/formulation-configurations/edit/' + formulationconfiguration._id) Edit
+					form(action='/formulation-configurations/delete/'+formulationconfiguration._id method='post')
+						//- CRSF Synchronization Token
+						input(type='hidden', name='_csrf', value=_csrf)
+						button.delete-btn.btn.btn-xs.btn-danger(type='submit') Delete

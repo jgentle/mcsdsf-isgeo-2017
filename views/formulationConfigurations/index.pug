@@ -1,0 +1,28 @@
+extends ../layout
+block content
+	h3 Formulation Configurations Index
+	.container
+		.row
+			h4 Current Formulation Configurations
+			.col-xs-12
+				if (formulationconfigurations[0] == null)
+					div
+						p No formulation configurations were found.
+				else
+					ul
+						for formulationconfiguration in formulationconfigurations
+							li
+								div.item-formulation-configuration #[strong Name:] #{formulationconfiguration.name}
+									form(action='/formulation-configurations/delete/'+formulationconfiguration._id method='post')
+										//- CRSF Synchronization Token
+										input(type='hidden', name='_csrf', value=_csrf)
+										button.btn.btn-xs.btn-danger.pull-right(type='submit') Delete
+									a.btn.btn-xs.btn-warning.pull-right(href='/formulation-configurations/edit/' + formulationconfiguration._id) Edit
+									a.btn.btn-xs.btn-success.pull-right(href='/formulation-configurations/show/' + formulationconfiguration._id) View
+								if (formulationconfiguration.description != null)
+									div.item-formulation-description #[strong Description:] #{formulationconfiguration.description}
+								else
+									div.item-formulation-description No description available.
+		.row
+			p Create a new Formulation Configuration
+				a.btn.btn-sm.btn-primary.create-btn(href='/formulation-configurations/create') Create

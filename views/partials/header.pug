@@ -21,6 +21,14 @@
 					a(href='/formulations')
 						i.fa.fa-flask
 						| Formulations
+				li(class=(title == 'Formulation Configurations') ? 'active' : undefined)
+					a(href='/formulation-configurations')
+						i.fa.fa-flask
+						| FC
+				li(class=(title == 'Systems Models') ? 'active' : undefined)
+					a(href='/systems-models')
+						i.fa.fa-cubes
+						| Systems Models
 				li(class=(title == 'Data') ? 'active' : undefined)
 					a(href='/datasources')
 						i.fa.fa-database

@@ -1,61 +1,31 @@
 extends ../layout
-
 block content
-  h3 Edit Formulation Configuration
-  .container
-    .row
-      .col-xs-12.col-sm-6.col-md-6.col-lg-4
-        form.form-horizontal(role='form', action='/formulations/update/'+formulation._id, method='post')
-          
-          //- CRSF Synchronization Token
-          input(type='hidden', name='_csrf', value=_csrf)
-          
-          //- Formulation Name
-          fieldset.form-group
-            label(for='formulationName') Formulation Name
-            input.form-control(type='text' name='formulationName' id='formulationName' placeholder='Enter Formulation Name' value=formulation.name)
-          
-          //- Select Source Data File
-          fieldset.form-group
-            label(for='dataSourceFile') Source Data File
-            input.form-control-file.btn.btn-sm.btn-primary(type='file' name='dataSourceFile' id='dataSourceFile' aria-describedby='dataSourceFileHelp' value=formulation.dataSourceFile)
-            small.form-text.text-muted(id='dataSourceFileHelp') The data source that will be used for the current formulation.
-          
-          //- Select Source Data File Type
-          //- fieldset.form-group
-            label Source Data File Format
-            div.form-check
-              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_csv' value='csv' checked)
-              label.form-check-label CSV
-            div.form-check
-              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_tsv' value='tsv')
-              label.form-check-label TSV
-            div.form-check
-              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_json' value='json')
-              label.form-check-label JSON
-            div.form-check
-              input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_piped' value='piped' disabled)
-              label.form-check-label Pipe-delimited (under development)
-          
-          //- Select Source GeoData File
-          fieldset.form-group
-            label(for='geodataSourceFile') Source GIS Data File
-            input.form-control-file.btn.btn-sm.btn-success(type='file' name='geodataSourceFile' id='geodataSourceFile' aria-describedby='geodataSourceFileHelp' value=formulation.geodataSourceFile)
-            small.form-text.text-muted(id='geodataSourceFileHelp') The GIS data source that will be used for the current formulation.
-          
-          //- Select Source Geodata File Type
-          //- fieldset.form-group
-            label Source Geodata File Format
-            div.form-check
-              input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_csv' value='geojson' checked)
-              label.form-check-label GeoJSON
-            div.form-check
-              input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_tsv' value='topojson')
-              label.form-check-label TopoJSON
-            div.form-check
-              input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_piped' value='shapefile' disabled)
-              label.form-check-label ESRI Shapefile (under development)
-            
-          //- POST Form Data
-          button.btn-create.btn.btn-sm.btn-warning(type='submit') Update
-          a.btn.btn-sm.btn-danger(href='/formulations') Cancel
+	h3 Edit Formulation
+	.container
+		.row
+			.col-xs-12
+				form.form-horizontal(role='form', action='/formulations/update/'+formulation._id, method='post')
+					//- CRSF Synchronization Token
+					input(type='hidden', name='_csrf', value=_csrf)
+					//- Name
+					fieldset.form-group
+						label(for='formulationName') Formulation Name
+						input.form-control(type='text' name='name' id='formulationName' placeholder='Enter Formulation Name' value=formulation.name)
+					//- Description
+					fieldset.form-group
+						label(for='formulationDescription') Formulation Description
+						textarea.form-control(type='text' name='description' id='formulationDescription' placeholder='Enter Formulation Description')=formulation.description
+					//- Configuration File
+					fieldset.form-group
+						label Select Formulation Configuration
+						if (formulationconfigurations == null)
+							p No configurations found.
+						else
+							select.form-control(type='dropdown' name='configuration_id' id='formulationConfiguration')
+								each fc in formulationconfigurations
+									option(value= fc.value, selected=blob.kind === fc.value ? true : false)=fc.text
+						p Create a new Configuration
+							a.btn.btn-sm.btn-primary.create-btn(href='/formulaton-configurations/create') Create
+					//- POST Form Data
+					button.btn-create.btn.btn-sm.btn-warning(type='submit') Update
+					a.btn.btn-sm.btn-danger(href='/formulations') Cancel

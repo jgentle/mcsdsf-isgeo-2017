@@ -6,7 +6,11 @@
 }
 .item-formulation {
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #DEDEDE;
+  // border-bottom: 1px solid #DEDEDE;
+}
+.item-formulation-description {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #CCCCCC;
 }
 .formulation-view {
   padding-bottom: 1rem;
@@ -14,4 +18,7 @@
 }
 .formulation-view > form {
   display: inline;
+}
+.item-attributes {
+  margin-bottom: 1rem;
 }

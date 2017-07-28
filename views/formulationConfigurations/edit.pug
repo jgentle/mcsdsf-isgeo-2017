@@ -1,0 +1,21 @@
+extends ../layout
+block content
+	h3 Edit Formulation Configuration
+	.container
+		.row
+			.col-xs-12
+				form.form-horizontal(role='form', action='/formulation-configurations/update/'+formulationconfiguration._id, method='post')
+					//- CRSF Synchronization Token
+					input(type='hidden', name='_csrf', value=_csrf)
+					//- Name
+					fieldset.form-group
+						label(for='configurationName') Configuration Name
+						input.form-control(type='text' name='name' id='configurationName' placeholder='Enter Configuration Name' value=formulationconfiguration.name)
+					//- Description
+					fieldset.form-group
+						label(for='configurationDescription') Configuration Description
+						textarea.form-control(type='text' name='description' id='configurationDescription' placeholder='Enter Configuration Description')=formulationconfiguration.description
+					//- Configuration Data
+					//- POST Form Data
+					button.btn-create.btn.btn-sm.btn-warning(type='submit') Update
+					a.btn.btn-sm.btn-danger(href='/formulation-configurations') Cancel

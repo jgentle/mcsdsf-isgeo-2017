@@ -1,10 +1,11 @@
 const Formulation = require('../models/Formulation.js');
+const FormulationConfiguration = require('../models/FormulationConfiguration.js');
 
 const formulationsController = {};
 
 // List All
 formulationsController.list = function(req, res) {
-  Formulation.find({}).exec(function (err, formulations) {
+  Formulation.find({}).exec(function(err, formulations) {
     if (err) {
       console.log("Error:", err);
     }
@@ -24,9 +25,17 @@ formulationsController.show = function(req, res) {
       console.log("Error:", err);
     }
     else {
-      res.render("formulations/show", {
-        title: 'Formulation Details',
-        formulation: formulation
+      Formulation.findOne({configuration: req.params.configuration}).exec(function (err, formulation, formulationconfiguration) {
+        if (err) {
+          console.log("Error:", err);
+        }
+        else {
+          res.render("formulations/show", {
+            title: 'Formulation Details',
+            formulation: formulation,
+            formulationconfiguration: formulationconfiguration
+          });
+        }
       });
     }
   });
@@ -34,8 +43,15 @@ formulationsController.show = function(req, res) {
 
 // Create (redirect to form)
 formulationsController.create = function(req, res) {
-  res.render("formulations/create", {
-    title: 'Create Formulation'
+  FormulationConfiguration.find({}).exec(function(err, formulationconfigurations) {
+    if (err) {
+      console.log("Error:", err);
+    } else {
+      res.render("formulations/create", {
+        title: 'Create Formulation',
+        formulationconfigurations: formulationconfigurations
+      });
+    }
   });
 };
 
@@ -71,7 +87,7 @@ formulationsController.edit = function(req, res) {
 
 // Update Formulation
 formulationsController.update = function(req, res) {
-  Formulation.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true }, function (err, formulation) {
+  Formulation.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, description: req.body.description, configuration: req.body.configuration }}, { new: true }, function (err, formulation) {
     if (err) {
       console.log(err);
       res.render("formulations/edit", {

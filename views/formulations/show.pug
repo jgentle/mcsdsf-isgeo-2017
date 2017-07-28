@@ -1,29 +1,19 @@
 extends ../layout
-
 block content
-    h3 Formulation: #{formulation.name}
-    .container
-      .row
-        .col-xs-12
-          div.formulation-view
-            div.item-attributes
-              strong Name:
-              | #{formulation.name}
-            div.item-attributes
-              strong  Data Source File:
-              | #{formulation.dataSourceFile}
-            //- div.item-attributes
-              strong  Data Source File Type:
-              | #{formulation.dataSourceFileType}
-            div.item-attributes
-              strong  Geodata Source File:
-              | #{formulation.geodataSourceFile}
-            //- div.item-attributes
-              strong  Geodata Source File Type:
-              | #{formulation.geodataSourceFileType}
-            a.view-all-btn.btn.btn-xs.btn-success(href='/formulations') View All
-            a.edit-btn.btn.btn-xs.btn-warning(href='/formulations/edit/' + formulation._id) Edit
-            form(action='/formulations/delete/'+formulation._id method='post')
-              //- CRSF Synchronization Token
-              input(type='hidden', name='_csrf', value=_csrf)
-              button.delete-btn.btn.btn-xs.btn-danger(type='submit') Delete
+	h3 Formulation: #{formulation.name}
+	.container
+		.row
+			.col-xs-12
+				div.formulation-view
+					div.item-attributes #[strong Name:] #{formulation.name}
+					div.item-attributes #[strong Description:] #{formulation.description}
+					div.item-attributes #[strong Formulation Configuration:] #{formulation.configuration}
+						a.btn.btn-xs.btn-primary(href="#") View Configuration
+					div.item-attributes #[strong Formulation Created On:] #{formulation.createdAt}
+					div.item-attributes #[strong Formulation Updated On:] #{formulation.updatedAt}
+					a.view-all-btn.btn.btn-xs.btn-success(href='/formulations') View All
+					a.edit-btn.btn.btn-xs.btn-warning(href='/formulations/edit/' + formulation._id) Edit
+					form(action='/formulations/delete/'+formulation._id method='post')
+						//- CRSF Synchronization Token
+						input(type='hidden', name='_csrf', value=_csrf)
+						button.delete-btn.btn.btn-xs.btn-danger(type='submit') Delete

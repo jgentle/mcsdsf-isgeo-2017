@@ -1,0 +1,20 @@
+extends ../layout
+block content
+  h3 Edit Systems Model Configuration
+  .container
+    .row
+      .col-xs-12
+        form.form-horizontal(role='form', action='/systems-model-configurations/update/'+systemsmodelconfiguration._id, method='post')
+          //- CRSF Synchronization Token
+          input(type='hidden', name='_csrf', value=_csrf)
+          //- Configuration Name
+          fieldset.form-group
+            label(for='configurationName') Configuration Name
+            input.form-control(type='text' name='name' id='configurationName' placeholder='Enter Configuration Name' value=systemsmodelconfiguration.name)
+          //- Configuration Description
+          fieldset.form-group
+            label(for='configurationDescription') Configuration Description
+            input.form-control(type='text' name='description' id='configurationDescription' placeholder='Enter Configuration Description' value=systemsmodelconfiguration.description)
+          //- POST Form Data
+          button.btn-create.btn.btn-sm.btn-warning(type='submit') Update
+          a.btn.btn-sm.btn-danger(href='/systems-model-configurations') Cancel
