@@ -37,6 +37,11 @@ li > a > i {
   background: #333333;
   // background: #225588;
 }
+// .divider-dropdown {
+//   height: 2rem;
+//   color: #f00;
+//   background: #0f0;
+// }
 li.dropdown > ul > li > a:hover {
   background: #333333;
 }
@@ -93,8 +98,29 @@ li.dropdown > ul > li > a:hover {
   .navbar-brand {
     padding: 1.5rem 0 0 1rem;
   }
+  .navbar-nav img,
+  .nav-profile {
+    margin-left: 0;
+    padding-left: 0;
+  }
   .nav > li > a {
     padding: 0.5rem 0 0.2rem 2rem;
+  }
+  // li.non-dropdown,
+  li.dropdown {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid #FFFFFF;
+  }
+  li.dropdown.open > a {
+    padding-bottom: 0.5rem;
+  }
+  // .active > a:nth-child(1),
+  // ul.nav > li:nth-child(1) > a,
+  li.dropdown.open > ul.dropdown-menu {
+    padding-top: 0.5rem;
+    // padding-bottom: 0.5rem;
+    border-top: 1px solid #FFFFFF;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {

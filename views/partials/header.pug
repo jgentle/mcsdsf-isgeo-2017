@@ -13,27 +13,23 @@
 		//- EMPTY
 		ul.nav.navbar-nav.navbar-right
 			if user
-				li(class=(title == 'Dashboard') ? 'active' : undefined)
+				li.non-dropdown(class=(title == 'Dashboard') ? 'active' : undefined)
 					a(href='/dashboard')
 						i.fa.fa-fw.fa-globe
 						| Dashboard
-				//- li.divider.visible-xs-block
 				li.dropdown
 					a.dropdown-toggle(href='#', data-toggle='dropdown')
-						//- i.fa.fa-fw.fa-mortar-board
-						//- i.fa.fa-fw.fa-university
 						i.fa.fa-fw.fa-book
 						| Hypotheses
 						i.caret
 					ul.dropdown-menu
-						li.divider
+						//- li.divider
 						li(class=(title == 'Formulations') ? 'active' : undefined)
 							a(href='/formulations')
 								i.fa.fa-fw.fa-flask
 								| Formulations
 						li(class=(title == 'Formulation Configurations') ? 'active' : undefined)
 							a(href='/formulation-configurations')
-								//- i.fa.fa-fw.fa-flask
 								i.fa.fa-fw.fa-cog
 								| Formulation Configurations
 						li.divider
@@ -43,7 +39,6 @@
 								| Systems Models
 						li(class=(title == 'Systems Model Configurations') ? 'active' : undefined)
 							a(href='/systems-model-configurations')
-								//- i.fa.fa-fw.fa-cubes
 								i.fa.fa-fw.fa-cog
 								| Systems Models Configurations
 						li.divider
@@ -51,16 +46,14 @@
 							a(href='/datasources')
 								i.fa.fa-fw.fa-database
 								| Data Sources
-						li.divider.visible-xs-block
 				//- end if
-				//- li.divider.visible-xs-block
 				li.dropdown
 					a.dropdown-toggle(href='#', data-toggle='dropdown')
 						i.fa.fa-fw.fa-info-circle
 						| Information
 						i.caret
 					ul.dropdown-menu
-						li.divider
+						//- li.divider
 						li(class=(title == 'Tutorial') ? 'active' : undefined)
 							a(href='/information/tutorial')
 								i.fa.fa-fw.fa-road
@@ -73,7 +66,6 @@
 							a(href='/information/about')
 								i.fa.fa-fw.fa-puzzle-piece
 								| About
-						li.divider.visible-xs-block
 			if !user
 				li(class=(title == 'Login') ? 'active' : undefined)
 					a(href='/login')
