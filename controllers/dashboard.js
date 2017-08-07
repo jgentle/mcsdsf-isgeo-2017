@@ -8,11 +8,5 @@ dashboardController.dashboard = (req, res) => {
   });
 };
 
-dashboardController.populate = (req, res) => {
-  res.render('dashboard/populate', {
-    title: 'Populate'
-  });
-};
-
 // Export Controller.
 module.exports = dashboardController;

@@ -13,17 +13,26 @@
 		//- EMPTY
 		ul.nav.navbar-nav.navbar-right
 			if user
-				li.non-dropdown(class=(title == 'Dashboard') ? 'active' : undefined)
-					a(href='/dashboard')
-						i.fa.fa-fw.fa-globe
-						| Dashboard
 				li.dropdown
 					a.dropdown-toggle(href='#', data-toggle='dropdown')
 						i.fa.fa-fw.fa-book
 						| Hypotheses
 						i.caret
 					ul.dropdown-menu
-						//- li.divider
+						li(class=(title == 'Workspace') ? 'active' : undefined)
+							a(href='/dashboard')
+								i.fa.fa-fw.fa-globe
+								| Dashboard
+						li.divider
+						li(class=(title == 'Populate') ? 'active' : undefined)
+							a(href='/discovery')
+								i.fa.fa-fw.fa-rocket
+								| Discovery Space
+						li(class=(title == 'Populate') ? 'active' : undefined)
+							a(href='/discovery/configure')
+								i.fa.fa-fw.fa-cog
+								| Discovery Space Configuration
+						li.divider
 						li(class=(title == 'Formulations') ? 'active' : undefined)
 							a(href='/formulations')
 								i.fa.fa-fw.fa-flask
@@ -53,7 +62,6 @@
 						| Information
 						i.caret
 					ul.dropdown-menu
-						//- li.divider
 						li(class=(title == 'Tutorial') ? 'active' : undefined)
 							a(href='/information/tutorial')
 								i.fa.fa-fw.fa-road
@@ -89,7 +97,7 @@
 						li
 							a(href='/account')
 								i.fa.fa-fw.fa-user
-								| My Account
+								| Profile
 						li
 							a(href='/logout')
 								i.fa.fa-fw.fa-sign-out

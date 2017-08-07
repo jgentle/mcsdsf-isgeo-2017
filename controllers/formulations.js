@@ -76,18 +76,12 @@ formulationsController.edit = function(req, res) {
     if (err) {
       console.log("Error:", err);
     }
-    // else {
-    //   res.render("formulations/edit", {
-    //     title: 'Edit Formulation',
-    //     formulation: formulation
-    //   });
-    // }
     FormulationConfiguration.find({}).exec(function(err, formulation, formulationconfigurations) {
       if (err) {
         console.log("Error:", err);
       } else {
         res.render("formulations/edit", {
-          title: 'Create Formulation',
+          title: 'Edit Formulation',
           formulation: formulation,
           formulationconfigurations: formulationconfigurations
         });

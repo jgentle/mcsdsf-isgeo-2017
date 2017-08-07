@@ -10,7 +10,7 @@ systemsModelConfigurationsController.list = function(req, res) {
     }
     else {
       res.render("systemsModelConfigurations/index", {
-        title: 'Systems Model Configurations',
+        title: 'Systems Model Configs',
         systemsmodelconfigurations: systemsmodelconfigurations
       });
     }
@@ -25,7 +25,7 @@ systemsModelConfigurationsController.show = function(req, res) {
     }
     else {
       res.render("systemsModelConfigurations/show", {
-        title: 'Systems Model Configuration Details',
+        title: 'Systems Model Config Details',
         systemsmodelconfiguration: systemsmodelconfiguration
       });
     }
@@ -35,7 +35,7 @@ systemsModelConfigurationsController.show = function(req, res) {
 // Create (redirect to form)
 systemsModelConfigurationsController.create = function(req, res) {
   res.render("systemsModelConfigurations/create", {
-    title: 'Create SystemsModelConfiguration'
+    title: 'Create Systems Model Config'
   });
 };
 
@@ -62,7 +62,7 @@ systemsModelConfigurationsController.edit = function(req, res) {
     }
     else {
       res.render("systemsModelConfigurations/edit", {
-        title: 'Edit Systems Model Configuration',
+        title: 'Edit Systems Model Config',
         systemsmodelconfiguration: systemsmodelconfiguration
       });
     }
@@ -75,7 +75,7 @@ systemsModelConfigurationsController.update = function(req, res) {
     if (err) {
       console.log(err);
       res.render("systemsModelConfigurations/edit", {
-        title: 'Update Systems Model Configuration',
+        title: 'Update Systems Model Config',
         systemsmodelconfiguration: req.body
       });
     }

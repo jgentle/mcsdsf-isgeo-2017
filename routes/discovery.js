@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const dashboardController = require('../controllers/dashboard');
+const discoveryController = require('../controllers/discovery');
 
 // middleware
 // router.use(function timeLog (req, res, next) {
@@ -9,6 +9,7 @@ const dashboardController = require('../controllers/dashboard');
 // })
 
 // define routes
-router.get('/', dashboardController.dashboard);
+router.get('/', discoveryController.discover);
+router.get('/configure', discoveryController.configure);
 
 module.exports = router;

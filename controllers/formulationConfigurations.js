@@ -10,7 +10,7 @@ formulationConfigurationsController.list = function(req, res) {
     }
     else {
       res.render("formulationConfigurations/index", {
-        title: 'Formulation Configurations',
+        title: 'Formulation Configs',
         formulationconfigurations: formulationconfigurations
       });
     }
@@ -25,7 +25,7 @@ formulationConfigurationsController.show = function(req, res) {
     }
     else {
       res.render("formulationConfigurations/show", {
-        title: 'Formulation Configuration Details',
+        title: 'Formulation Config Details',
         formulationconfiguration: formulationconfiguration
       });
     }
@@ -35,7 +35,7 @@ formulationConfigurationsController.show = function(req, res) {
 // Create (redirect to form)
 formulationConfigurationsController.create = function(req, res) {
   res.render("formulationConfigurations/create", {
-    title: 'Create FormulationConfiguration'
+    title: 'Create Formulation Config'
   });
 };
 
@@ -62,7 +62,7 @@ formulationConfigurationsController.edit = function(req, res) {
     }
     else {
       res.render("formulationConfigurations/edit", {
-        title: 'Edit Formulation Configuration',
+        title: 'Edit Formulation Config',
         formulationconfiguration: formulationconfiguration
       });
     }
@@ -75,7 +75,7 @@ formulationConfigurationsController.update = function(req, res) {
     if (err) {
       console.log(err);
       res.render("formulationConfigurations/edit", {
-        title: 'Update Formulation Configuration',
+        title: 'Update Formulation Config',
         formulationconfiguration: req.body
       });
     }
