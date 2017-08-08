@@ -2,6 +2,7 @@ extends ../layout
 
 block content
 	h3 Data Upload
+	//- p#test Testing #{ dataTest }
 	.container
 		.row
 			.col-xs-12.col-sm-6.col-md-6.col-lg-4
@@ -13,22 +14,24 @@ block content
 					//- Formulation Name
 					fieldset.form-group
 						label(for='name') Data Source Name
-						input.form-control(type='text' name='name' id='name' placeholder='Enter Data Source Name')
+						//- span.help-block#targetFileNameHelper All datasources require a filename.
+						input.form-control#targetFileName(type='text' name='name' placeholder='Enter Data Source Name' required)
+						//- div#fileNameErrors
 
-					//- NonGeospation vs Geospatial toggle.
-					//- Make remainder fo form dynamic based on selection.
-					fieldset.form-group
+					//- NonGeospatial vs Geospatial toggle.
+					//- Make remainder of form dynamic based on selection.
+					fieldset.form-group#geospatialCheck
 						label Is this Data Source Geospatial?
 						div.form-check
-							input.form-check-input(type='radio' name='dataSourceGespatial' id='dataSourceGespatial_true' value='true')
+							input.form-check-input(type='radio' name='isGeospatial' id='isGeospatial' value='true')
 							label.form-check-label True
 						div.form-check
-							input.form-check-input(type='radio' name='dataSourceGespatial' id='dataSourceGespatial_false' value='false')
+							input.form-check-input(type='radio' name='isGeospatial' id='notGeospatial' value='false')
 							label.form-check-label False
 
 					//- IF nonGeospatial
 					//- Select Source Data File Type
-					fieldset.form-group
+					fieldset.form-group#nonGeospatial
 						label Source File Data Format
 						div.form-check
 							input.form-check-input(type='radio' name='dataSourceFileType' id='dataSourceFileType_csv' value='csv')
@@ -45,24 +48,28 @@ block content
 
 					//- IF Geospatial
 					//- Select Source Geodata File Type
-					fieldset.form-group
+					fieldset.form-group#geospatial
 						label Source File Geospatial Data Format
 						div.form-check
-							input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_csv' value='geojson')
+							input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_geo' value='geojson')
 							label.form-check-label GeoJSON
 						div.form-check
-							input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_tsv' value='topojson')
+							input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_topo' value='topojson')
 							label.form-check-label TopoJSON (under development)
 						div.form-check
-							input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_piped' value='shapefile' disabled)
+							input.form-check-input(type='radio' name='geodataSourceFileType' id='geodataSourceFileType_shp' value='shapefile' disabled)
 							label.form-check-label ESRI Shapefile (under development)
 
-					//- Select Source Data File
-					fieldset.form-group
+					//- Select Source Data Target File
+					fieldset.form-group#targetFile
 						label(for='dataSourceFile') Data Source File
 						input.form-control-file.btn.btn-sm.btn-primary(type='file' name='dataSourceFile' id='dataSourceFile' aria-describedby='dataSourceFileHelp')
 						small.form-text.text-muted(id='dataSourceFileHelp') The data source that will be used for the current formulation.
 
-					//- POST Form Data
-					button.btn-create.btn.btn-sm.btn-primary(type='submit' value='Save') Create
+					//- POST Form Data IF Valid
+					button.btn-create.btn.btn-sm.btn-primary#uploadButton(type='submit' value='Save' disabled) Create
 					a.btn.btn-sm.btn-danger(href='/datasources') Cancel
+
+block viewJS
+	script(src='/scripts/jquery/dist/jquery.min.js')
+	script(type='text/javascript' src='/js/datasource-upload.js')

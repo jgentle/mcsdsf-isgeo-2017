@@ -40,7 +40,8 @@ dataController.show = function(req, res) {
 // Create (redirect to form)
 dataController.upload = function(req, res) {
   res.render("datasources/upload", {
-    title: 'Upload Data Source'
+    title: 'Upload Data Source',
+    dataTest: 'WTH'
   });
 };
 

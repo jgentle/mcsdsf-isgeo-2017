@@ -11,16 +11,13 @@ html
 		//- link(rel='shortcut icon', href='/images/favicon.png')
 		link(rel='shortcut icon', href='/images/watermark-logo.png')
 		link(rel='stylesheet', href='/css/main.css')
-
 	body
 		include partials/header
-
 		.container
 			include partials/flash
 			block content
-
+			block viewJS
 		//- include partials/footer
-
 		script(src='/scripts/jquery/dist/jquery.min.js')
 		script(src='/scripts/bootstrap-sass/assets/javascripts/bootstrap.min.js')
 		//- TODO: Integrate Vue.js properly as render-engine with pug.
