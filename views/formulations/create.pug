@@ -24,8 +24,8 @@ block content
 							select.form-control(type='dropdown' name='configuration_id' id='formulationConfiguration')
 								each fc in formulationconfigurations
 									option(value=fc.id) #{fc.name}
-						p Create a new Configuration
-							a.btn.btn-sm.btn-primary.create-btn(href='/formulation-configurations/create') Create
+						p.text-right Create a new Configuration
+							a.btn.btn-xs.btn-info.create-btn(href='/formulation-configurations/create') Create
 					//- POST Form Data
 					button.btn-create.btn.btn-sm.btn-primary(type='submit' value='Save') Create
 					a.btn.btn-sm.btn-danger(href='/formulations') Cancel

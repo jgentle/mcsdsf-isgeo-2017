@@ -100,6 +100,7 @@ formulationsController.update = function(req, res) {
         formulation: req.body
       });
     }
+    console.log(formulation);
     res.redirect("/formulations/show/"+formulation._id);
   });
 };

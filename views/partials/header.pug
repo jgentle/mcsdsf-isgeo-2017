@@ -16,17 +16,23 @@
 				li.dropdown
 					a.dropdown-toggle(href='#', data-toggle='dropdown')
 						i.fa.fa-fw.fa-book
+						//- i.fa.fa-fw.fa-briefcase
 						| Hypotheses
+						//- | Workbench
 						i.caret
 					ul.dropdown-menu
 						li(class=(title == 'Workspace') ? 'active' : undefined)
 							a(href='/dashboard')
-								i.fa.fa-fw.fa-globe
+								//- i.fa.fa-fw.fa-globe
+								i.fa.fa-fw.fa-desktop
 								| Dashboard
 						li.divider
 						li(class=(title == 'Populate') ? 'active' : undefined)
 							a(href='/discovery')
-								i.fa.fa-fw.fa-rocket
+								//- i.fa.fa-fw.fa-rocket
+								//- i.fa.fa-fw.fa-briefcase
+								i.fa.fa-fw.fa-globe
+								//- i.fa.fa-fw.fa-lightbulb-o
 								| Discovery Space
 						li(class=(title == 'Populate') ? 'active' : undefined)
 							a(href='/discovery/configure')
