@@ -3,19 +3,22 @@
 
 // Must import theme vars BEFORE bootstrap.
 // Coordinate with theme BELOW.
-@import "themes/default/variables";
+// @import "themes/default/variables";
 // @import "themes/flatly/variables";
 // @import "themes/gsdk/gsdk/variables";
 // @import "themes/modern/variables";
+@import "themes/watermark/variables";
 
+// Must inport Bootstrap between vars and themes.
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 // Must import themes AFTER bootstrap.
 // Coordinate with vars ABOVE.
-@import "themes/default/default";
+// @import "themes/default/default";
 // @import "themes/flatly/flatly";
 // @import "themes/gsdk/gsdk";
 // @import "themes/modern/modern";
+@import "themes/watermark/watermark";
 
 @import "lib/bootstrap-social";
 @import "_scaffolding";
