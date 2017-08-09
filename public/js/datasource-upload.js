@@ -1,4 +1,4 @@
-console.log('datasource-upload.js');
+// console.log('>>> START datasource-upload.js');
 
 let nameCheck = new Boolean(false);
 let geoCheck = new Boolean(false);
@@ -27,7 +27,9 @@ const resetGeospatial = function() {
 }
 
 const resetTargetFile = function() {
+  $('#dataSourceFile').val('');
   $('#targetFile').hide();
+  $('#uploadButton').prop('disabled', true);
 }
 
 const hideAllInputs = function() {
@@ -42,14 +44,12 @@ const hideAllInputs = function() {
   $('#targetFileName').val('');
 }
 
-// Called once a file is selected for upload.
-const chooseTargetFile = function() {
-  // Verify that a filepath or filename was chosen.
-  filePath = true;
-  // if succesful, then validate form and enable upload.
-  validateForm();
+const formatCheckValid = function() {
+  formatCheck = true;
+  $('#targetFile').show();
 }
 
+// Called once a file is selected for upload.
 const validateForm = function() {
   console.log('validating form');
   if (nameCheck && geoCheck && formatCheck && filePath) {
@@ -95,66 +95,67 @@ $('input[type=radio][name="isGeospatial"]').change(function() {
   geoCheck = true;
 });
 
-// Enable Upload button based on subsequent format selection.
+// Enable target file selection button based on subsequent format selection.
 $('input[type=radio][name="dataSourceFileType"]').change(function() {
   var currentState = $(this).val();
   console.log(currentState);
   switch(currentState) {
     case 'csv':
       console.log('CSV data selected');
-      formatCheck = true;
-      $('#targetFile').show();
+      formatCheckValid();
       break;
     case 'tsv':
       console.log('TSV data selected');
-      formatCheck = true;
-      $('#targetFile').show();
+      formatCheckValid();
       break;
     case 'json':
       console.log('JSON data selected');
-      formatCheck = true;
-      $('#targetFile').show();
+      formatCheckValid();
       break;
     case 'pipe':
       console.log('Pipe-delimited data selected');
-      formatCheck = true;
-      $('#targetFile').show();
+      formatCheckValid();
       break;
     default:
       console.log('No data format selected.');
       formatCheck = false;
       break;
   }
-  // chooseTargetFile();
 });
 
+// Enable target file selection button based on subsequent format selection.
 $('input[type=radio][name="geodataSourceFileType"]').change(function() {
   var currentState = $(this).val();
   console.log(currentState);
   switch(currentState) {
     case 'geojson':
       console.log('GeoJSON data selected');
-      formatCheck = true;
-      $('#targetFile').show();
+      formatCheckValid();
       break;
     case 'topojson':
       console.log('TopoJSON data selected');
-      formatCheck = true;
-      $('#targetFile').show();
+      formatCheckValid();
       break;
     case 'shapefile':
       console.log('ESRI Shapefile data selected');
-      formatCheck = true;
-      $('#targetFile').show();
+      formatCheckValid();
       break;
     default:
       console.log('No data format selected.');
       formatCheck = false;
       break;
   }
-  // chooseTargetFile();
 });
 
+// Validate form content after target file selection.
+$('input[type=file][name="dataSourceFile"]').change(function() {
+  if ($(this).val().trim() != '') {
+    console.log($(this).val());
+    filePath = true;
+    validateForm();
+  } else {
+    console.log('No valid file selected.');
+  }
+});
 
-
-console.log('end of script');
+// console.log('<<<< END datasource-upload.js');
