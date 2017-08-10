@@ -1,0 +1,74 @@
+.tutorial-intro {
+  margin: 1rem 0 2rem 1rem;
+}
+
+.tutorial-step {
+  margin: 0 0 1rem 0;
+}
+
+.walk-through-number {
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+.number {
+  min-width: 5rem;
+  min-height: 5rem;
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  vertical-align: bottom;
+  border: 1px solid #000;
+  border-top-left-radius: 2rem !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 2rem !important;
+  border-bottom-right-radius: 0 !important;
+  // border-radius: 5rem !important;
+}
+
+// Custom color scheme.
+// .number-one { background: #CCC; }
+// .number-two { background: #A8C; }
+// .number-three { background: #48C; }
+// .number-four { background: #8C8; }
+// .number-five { background: #CC8; }
+// .number-six { background: #CA8; }
+// .number-seven { background: #C88; }
+// .number-eight { color: #FFF; background: #000; }
+
+// Colorbrewer Scale - Single Hue Blue.
+// .number-one { background: #f7fbff; }
+// .number-two { background: #deebf7; }
+// .number-three { background: #c6dbef; }
+// .number-four { background: #9ecae1; }
+// .number-five { color: #FFF; background: #6baed6; }
+// .number-six { color: #FFF; background: #4292c6; }
+// .number-seven { color: #FFF; background: #2171b5; }
+// .number-eight { color: #FFF; background: #08519c; }
+// .number-nine { color: #FFF; background: #08306b; }
+
+// Colorbrewer Scale - Single Hue Black.
+.number-one { background: #ffffff; }
+.number-two { background: #f0f0f0; }
+.number-three { background: #d9d9d9; }
+.number-four { background: #bdbdbd; }
+.number-five { color: #FFF; background: #969696; }
+.number-six { color: #FFF; background: #737373; }
+.number-seven { color: #FFF; background: #525252; }
+.number-eight { color: #FFF; background: #252525; }
+.number-nine { color: #FFF; background: #000000; }
+
+.walk-through-step {
+  margin: 1rem 0.5rem 0 0;
+  padding: 0 !important;
+  vertical-align: top;
+  border-top: 1px solid #000;
+}
+
+.step-label {
+  margin: 1rem 0 0 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.step-description { padding: 0 0 0 2rem; }

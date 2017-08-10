@@ -1,13 +1,13 @@
 extends ../layout
 block content
-	h3 Systems Model Index
+	h3 Systems Models Index
 	.container
 		.row
-			h4 Current Systems Model
+			h4 Current Systems Models
 			.col-xs-12
 				if (systemsmodels[0] == null)
 					div
-						p No systems model configurations were found.
+						p No systems models were found.
 				else
 					ul
 						for systemsmodel in systemsmodels

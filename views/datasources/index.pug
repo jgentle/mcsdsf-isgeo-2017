@@ -4,8 +4,12 @@ block content
 	h3 Data Sources
 	.container
 		.row
+			p Upload a new Data Source
+				a.btn.btn-sm.btn-primary.create-btn(href='/datasources/upload') Upload
+			hr
+		.row
 			if (datasources != null)
-				.col-xs-12.col-md-6
+				.col-xs-12.col-sm-6
 					h4 Non-geospatial Data Sources
 					for datasource in datasources
 						if (datasource.geospatialData = false)
@@ -20,7 +24,7 @@ block content
 										a.btn.btn-xs.btn-success.pull-right(href='/datasources/show/' + datasource._id) View
 						else
 							div No datasources found.
-				.col-xs-12.col-md-6
+				.col-xs-12.col-sm-6
 					h4 Geospatial Data Sources
 					for datasource in datasources
 						if (datasource.geospatialData = true)
@@ -37,6 +41,3 @@ block content
 							div No geospatial datasources found.
 			else
 				div No datasources found.
-		.row
-			p Upload a new Data Source
-				a.btn.btn-sm.btn-primary.create-btn(href='/datasources/upload') Upload
